@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9A91267067F1605A3BDADBC /* Pods_LuckyX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */; };
 		E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7621A0F0450011779E /* AppDelegate.swift */; };
 		E14A0F7921A0F0450011779E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7821A0F0450011779E /* ViewController.swift */; };
 		E14A0F7C21A0F0450011779E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7A21A0F0450011779E /* Main.storyboard */; };
 		E14A0F7E21A0F0470011779E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7D21A0F0470011779E /* Assets.xcassets */; };
 		E14A0F8121A0F0470011779E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7F21A0F0470011779E /* LaunchScreen.storyboard */; };
+		E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */; };
+		E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5221A1475E00413E39 /* ImageHelper.swift */; };
+		E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5421A1487600413E39 /* PrizeCell.swift */; };
+		E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5621A1575A00413E39 /* PersonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuckyX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.release.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.release.xcconfig"; sourceTree = "<group>"; };
+		A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.debug.xcconfig"; sourceTree = "<group>"; };
 		E14A0F7321A0F0450011779E /* LuckyX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuckyX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14A0F7621A0F0450011779E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14A0F7821A0F0450011779E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,10 @@
 		E14A0F7D21A0F0470011779E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E14A0F8021A0F0470011779E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E14A0F8221A0F0470011779E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		E1AD5A5221A1475E00413E39 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		E1AD5A5421A1487600413E39 /* PrizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeCell.swift; sourceTree = "<group>"; };
+		E1AD5A5621A1575A00413E39 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A91267067F1605A3BDADBC /* Pods_LuckyX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58581A26500EAC2E22906872 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */,
+				5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E14A0F6A21A0F0450011779E = {
 			isa = PBXGroup;
 			children = (
 				E14A0F7521A0F0450011779E /* LuckyX */,
 				E14A0F7421A0F0450011779E /* Products */,
+				58581A26500EAC2E22906872 /* Pods */,
+				F8A51987CC1268C909505545 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +84,20 @@
 				E14A0F7D21A0F0470011779E /* Assets.xcassets */,
 				E14A0F7F21A0F0470011779E /* LaunchScreen.storyboard */,
 				E14A0F8221A0F0470011779E /* Info.plist */,
+				E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */,
+				E1AD5A5221A1475E00413E39 /* ImageHelper.swift */,
+				E1AD5A5421A1487600413E39 /* PrizeCell.swift */,
+				E1AD5A5621A1575A00413E39 /* PersonCell.swift */,
 			);
 			path = LuckyX;
+			sourceTree = "<group>";
+		};
+		F8A51987CC1268C909505545 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E14A0F8521A0F0470011779E /* Build configuration list for PBXNativeTarget "LuckyX" */;
 			buildPhases = (
+				06D038AAE5A588968B56F4E0 /* [CP] Check Pods Manifest.lock */,
 				E14A0F6F21A0F0450011779E /* Sources */,
 				E14A0F7021A0F0450011779E /* Frameworks */,
 				E14A0F7121A0F0450011779E /* Resources */,
+				828F3218DF59D6C1A2BCE2A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +168,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06D038AAE5A588968B56F4E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LuckyX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		828F3218DF59D6C1A2BCE2A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E14A0F6F21A0F0450011779E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */,
+				E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */,
 				E14A0F7921A0F0450011779E /* ViewController.swift in Sources */,
+				E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */,
 				E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */,
+				E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +361,7 @@
 		};
 		E14A0F8621A0F0470011779E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +380,7 @@
 		};
 		E14A0F8721A0F0470011779E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
