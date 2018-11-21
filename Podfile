@@ -7,5 +7,6 @@ target 'LuckyX' do
 
   # Pods for LuckyX
   pod 'AVOSCloud'
+  pod 'RealmSwift'
 
 end

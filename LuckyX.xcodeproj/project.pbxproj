@@ -17,6 +17,9 @@
 		E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5221A1475E00413E39 /* ImageHelper.swift */; };
 		E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5421A1487600413E39 /* PrizeCell.swift */; };
 		E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5621A1575A00413E39 /* PersonCell.swift */; };
+		E1C36FD121A5B9DB0019DEFC /* LeftPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */; };
+		E1C36FD221A5B9DB0019DEFC /* RightPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */; };
+		E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		E1AD5A5221A1475E00413E39 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		E1AD5A5421A1487600413E39 /* PrizeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeCell.swift; sourceTree = "<group>"; };
 		E1AD5A5621A1575A00413E39 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftPersonCell.swift; sourceTree = "<group>"; };
+		E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPersonCell.swift; sourceTree = "<group>"; };
+		E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,9 @@
 		E14A0F7521A0F0450011779E /* LuckyX */ = {
 			isa = PBXGroup;
 			children = (
+				E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */,
+				E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */,
+				E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */,
 				E14A0F7621A0F0450011779E /* AppDelegate.swift */,
 				E14A0F7821A0F0450011779E /* ViewController.swift */,
 				E14A0F7A21A0F0450011779E /* Main.storyboard */,
@@ -195,10 +204,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -213,9 +226,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */,
+				E1C36FD121A5B9DB0019DEFC /* LeftPersonCell.swift in Sources */,
 				E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */,
+				E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */,
 				E14A0F7921A0F0450011779E /* ViewController.swift in Sources */,
 				E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */,
+				E1C36FD221A5B9DB0019DEFC /* RightPersonCell.swift in Sources */,
 				E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */,
 				E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */,
 			);
@@ -374,7 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.LuckyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -393,7 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.LuckyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
