@@ -15,7 +15,9 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet var leftTableView: UITableView!
     @IBOutlet var rightTableView: UITableView!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         initTwoLists()
@@ -47,7 +49,10 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RightPersonCell
             cell.name.text = rightPersons![indexPath.row].name
             cell.number.text = rightPersons![indexPath.row].number.description
-            cell.prize.text = "无奖品"
+            let realm = try! Realm()
+            let tempNumber = rightPersons![indexPath.row].number
+            let tempPrize = realm.objects(Prize.self).filter("masterNumber = \(tempNumber)").first
+            cell.prize.text = tempPrize!.name
             return cell
         }
     }

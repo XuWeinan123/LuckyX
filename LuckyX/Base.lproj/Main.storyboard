@@ -170,14 +170,48 @@
                                     <segue destination="3eX-rq-kO1" kind="push" id="obW-L8-fjc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
+                                <rect key="frame" x="166" y="56" width="74" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="resetPerson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdQ-HN-Qem"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
+                                <rect key="frame" x="381" y="223" width="72" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="刷新"/>
+                                <connections>
+                                    <action selector="getSomeLuckyBitchs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXa-z4-8MS"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zzd-Ks-X6u">
+                                <rect key="frame" x="253.5" y="360" width="327" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="gIq-KT-1sb"/>
+                                    <constraint firstAttribute="width" constant="327" id="xKw-Y7-fnp"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="一等奖"/>
+                                    <segment title="二等奖"/>
+                                    <segment title="三等奖"/>
+                                    <segment title="阳光普照奖"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KI6-bX-4rS"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6qF-bM-fiw"/>
+                            <constraint firstItem="Zzd-Ks-X6u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Ia-6I-n8S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kdw-xN-U7F" secondAttribute="bottom" id="EqE-0r-ZcF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kdw-xN-U7F" secondAttribute="trailing" id="XCE-Zc-NmN"/>
                             <constraint firstItem="Kdw-xN-U7F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y5o-Qq-2St"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
+                            <constraint firstItem="Zzd-Ks-X6u" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="i61-Hf-RKO"/>
                             <constraint firstItem="IpB-KT-ypC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jl7-4Q-3D2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72g-8E-A7l" secondAttribute="trailing" id="l4s-oz-h06"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpB-KT-ypC" secondAttribute="trailing" id="oV3-oo-Xrq"/>
@@ -240,8 +274,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="name" destination="Mzb-E9-f3N" id="BQK-13-QDa"/>
-                                            <outlet property="number" destination="6tc-TZ-2G7" id="QKe-oU-Jo2"/>
+                                            <outlet property="name" destination="Mzb-E9-f3N" id="nyR-bR-9ZD"/>
+                                            <outlet property="number" destination="6tc-TZ-2G7" id="PUK-RO-LCk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -288,9 +322,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="name" destination="Swa-dE-EfL" id="5NK-8b-i14"/>
-                                            <outlet property="number" destination="74H-UL-Egs" id="UXD-6i-kkp"/>
-                                            <outlet property="prize" destination="BeT-Fs-dzJ" id="QVz-PY-508"/>
+                                            <outlet property="name" destination="Swa-dE-EfL" id="ON3-BL-Hr0"/>
+                                            <outlet property="number" destination="74H-UL-Egs" id="UIB-Bu-O0s"/>
+                                            <outlet property="prize" destination="BeT-Fs-dzJ" id="GAE-kF-Neq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -443,6 +477,7 @@
     </scenes>
     <resources>
         <image name="backgroundImage" width="1024" height="1366"/>
+        <image name="刷新" width="72" height="72"/>
         <image name="奖品栏" width="1024" height="186"/>
         <image name="选择按钮" width="174" height="174"/>
         <image name="金蛋" width="112" height="112"/>

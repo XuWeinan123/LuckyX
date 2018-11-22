@@ -10,6 +10,7 @@ import UIKit
 
 class LeftPersonCell: UITableViewCell {
 
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
     override func awakeFromNib() {
