@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CrW-Cm-dKR">
-    <device id="ipad10_5" orientation="portrait">
+    <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <navigationController id="CrW-Cm-dKR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1lU-DZ-dls">
-                        <rect key="frame" x="0.0" y="20" width="834" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="1112" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -31,20 +31,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LuckyX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Kdw-xN-U7F">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="奖品栏" translatesAutoresizingMaskIntoConstraints="NO" id="IpB-KT-ypC">
-                                <rect key="frame" x="0.0" y="926" width="834" height="186"/>
+                                <rect key="frame" x="0.0" y="648" width="1112" height="186"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="186" id="C8W-cg-78A"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="72g-8E-A7l">
-                                <rect key="frame" x="0.0" y="938" width="834" height="174"/>
+                                <rect key="frame" x="0.0" y="660" width="1112" height="174"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="174" id="m20-gT-PnE"/>
@@ -101,36 +101,88 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
+                                <rect key="frame" x="230" y="38" width="74" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="resetPerson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdQ-HN-Qem"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.050000000000000003" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
+                                <rect key="frame" x="381" y="223" width="72" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="刷新"/>
+                                <connections>
+                                    <action selector="getSomeLuckyBitchs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXa-z4-8MS"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zzd-Ks-X6u">
+                                <rect key="frame" x="342.5" y="260" width="427" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="gIq-KT-1sb"/>
+                                    <constraint firstAttribute="width" constant="427" id="xKw-Y7-fnp"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="一等奖"/>
+                                    <segment title="二等奖"/>
+                                    <segment title="三等奖"/>
+                                    <segment title="阳光普照奖"/>
+                                    <segment title="👑特等奖"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KI6-bX-4rS"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="6" translatesAutoresizingMaskIntoConstraints="NO" id="cVZ-Vu-DyL">
+                                <rect key="frame" x="452" y="584" width="208" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="mwc-IY-9Nz"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="红"/>
+                                    <segment title="橙"/>
+                                    <segment title="黄"/>
+                                    <segment title="蓝"/>
+                                    <segment title="紫"/>
+                                    <segment title="粉"/>
+                                    <segment title="全"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="colorPickerValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Nqk-1m-uuZ"/>
+                                </connections>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JfX-Av-qv2">
-                                <rect key="frame" x="56.5" y="426" width="721" height="260"/>
+                                <rect key="frame" x="206" y="317" width="700" height="200"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.1176470588" blue="0.078431372550000003" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="j1f-Gp-aua"/>
-                                    <constraint firstAttribute="width" constant="721" id="mch-0E-0dA"/>
+                                    <constraint firstAttribute="height" constant="200" id="j1f-Gp-aua"/>
+                                    <constraint firstAttribute="width" constant="700" id="mch-0E-0dA"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="30" id="BED-HS-h8d">
-                                    <size key="itemSize" width="120" height="120"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="50" id="BED-HS-h8d">
+                                    <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7ao-4x-dGP" customClass="PersonCell" customModule="LuckyX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-sx-cBl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acG-aH-ze6">
-                                                            <rect key="frame" x="29.5" y="42" width="61.5" height="48"/>
+                                                            <rect key="frame" x="54.5" y="74" width="91" height="72"/>
                                                             <string key="text">徐炜楠
 360</string>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                            <color key="textColor" red="0.82352941176470584" green="0.11764705882352941" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -141,7 +193,7 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="金蛋" translatesAutoresizingMaskIntoConstraints="NO" id="0fD-Ft-H8F">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -164,58 +216,28 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-xU-5fT">
-                                <rect key="frame" x="595" y="56" width="74" height="47"/>
+                                <rect key="frame" x="807" y="38" width="74" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="3eX-rq-kO1" kind="push" id="obW-L8-fjc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
-                                <rect key="frame" x="166" y="56" width="74" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="resetPerson:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdQ-HN-Qem"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
-                                <rect key="frame" x="381" y="223" width="72" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="刷新"/>
-                                <connections>
-                                    <action selector="getSomeLuckyBitchs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXa-z4-8MS"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zzd-Ks-X6u">
-                                <rect key="frame" x="253.5" y="360" width="327" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="gIq-KT-1sb"/>
-                                    <constraint firstAttribute="width" constant="327" id="xKw-Y7-fnp"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="一等奖"/>
-                                    <segment title="二等奖"/>
-                                    <segment title="三等奖"/>
-                                    <segment title="阳光普照奖"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KI6-bX-4rS"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="IpB-KT-ypC" firstAttribute="top" secondItem="cVZ-Vu-DyL" secondAttribute="bottom" constant="36" id="5bf-g2-vgl"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6qF-bM-fiw"/>
                             <constraint firstItem="Zzd-Ks-X6u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Ia-6I-n8S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kdw-xN-U7F" secondAttribute="bottom" id="EqE-0r-ZcF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kdw-xN-U7F" secondAttribute="trailing" id="XCE-Zc-NmN"/>
                             <constraint firstItem="Kdw-xN-U7F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y5o-Qq-2St"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
-                            <constraint firstItem="Zzd-Ks-X6u" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="360" id="i61-Hf-RKO"/>
+                            <constraint firstItem="Zzd-Ks-X6u" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="260" id="i61-Hf-RKO"/>
                             <constraint firstItem="IpB-KT-ypC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jl7-4Q-3D2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72g-8E-A7l" secondAttribute="trailing" id="l4s-oz-h06"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpB-KT-ypC" secondAttribute="trailing" id="oV3-oo-Xrq"/>
                             <constraint firstItem="72g-8E-A7l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p2W-a3-Mro"/>
+                            <constraint firstItem="cVZ-Vu-DyL" firstAttribute="centerX" secondItem="Zzd-Ks-X6u" secondAttribute="centerX" id="piD-VY-j6g"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IpB-KT-ypC" secondAttribute="bottom" id="rsd-tl-Yza"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="72g-8E-A7l" secondAttribute="bottom" id="yNN-sE-0He"/>
                             <constraint firstItem="Kdw-xN-U7F" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yaQ-rH-CiZ"/>
@@ -225,7 +247,10 @@
                     <navigationItem key="navigationItem" id="kGg-eQ-xh4"/>
                     <connections>
                         <outlet property="collectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
+                        <outlet property="colorPicker" destination="cVZ-Vu-DyL" id="eJ1-db-0S7"/>
+                        <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
+                        <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -237,20 +262,20 @@
             <objects>
                 <viewController id="3eX-rq-kO1" customClass="PersonListVC" customModule="LuckyX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9LL-wb-kda">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T6B-O9-yHK">
-                                <rect key="frame" x="0.0" y="0.0" width="417" height="1112"/>
+                                <rect key="frame" x="0.0" y="0.0" width="556" height="834"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="QiT-OA-17Q" customClass="LeftPersonCell" customModule="LuckyX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="417" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="556" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QiT-OA-17Q" id="Slv-Pp-olD">
-                                            <rect key="frame" x="0.0" y="0.0" width="417" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王二麻子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-E9-f3N">
@@ -281,16 +306,16 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Fl-Ua-Owf">
-                                <rect key="frame" x="417" y="0.0" width="417" height="1112"/>
+                                <rect key="frame" x="556" y="0.0" width="556" height="834"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="BDn-12-LfF" customClass="RightPersonCell" customModule="LuckyX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="417" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="556" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BDn-12-LfF" id="UzY-1w-LIR">
-                                            <rect key="frame" x="0.0" y="0.0" width="417" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王二麻子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swa-dE-EfL">
@@ -358,20 +383,20 @@
             <objects>
                 <viewController title="抽奖名单" id="ujj-X0-XXP" customClass="PersonListVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3vk-bA-Jfe">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UiG-hU-0CL">
-                                <rect key="frame" x="0.0" y="20" width="417" height="1092"/>
+                                <rect key="frame" x="0.0" y="20" width="556" height="814"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="NWn-nP-yz6" customClass="LeftPersonCell" customModule="LuckyX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="417" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="556" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NWn-nP-yz6" id="cP9-37-y6T">
-                                            <rect key="frame" x="0.0" y="0.0" width="417" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王二麻子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPa-Hx-nLT">
@@ -402,16 +427,16 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oMW-QV-h5E">
-                                <rect key="frame" x="417" y="20" width="417" height="1092"/>
+                                <rect key="frame" x="556" y="20" width="556" height="814"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="L1L-BV-UiH" customClass="RightPersonCell" customModule="LuckyX" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="417" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="556" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L1L-BV-UiH" id="QbY-rt-kke">
-                                            <rect key="frame" x="0.0" y="0.0" width="417" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="556" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王二麻子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLp-em-G6D">
