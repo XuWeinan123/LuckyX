@@ -14,6 +14,7 @@ class Person: Object {
     @objc dynamic var number = -1
     @objc dynamic var isAvailable = true
     @objc dynamic var color = "无"
+    @objc dynamic var wish👀 = "无心愿"
 }
 class Prize: Object{
     @objc dynamic var name = ""

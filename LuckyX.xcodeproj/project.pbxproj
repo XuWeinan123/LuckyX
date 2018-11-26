@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DF28D5B21ABF2FC00BAEC0F /* EditPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */; };
 		A9A91267067F1605A3BDADBC /* Pods_LuckyX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */; };
 		E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7621A0F0450011779E /* AppDelegate.swift */; };
 		E14A0F7921A0F0450011779E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7821A0F0450011779E /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuckyX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonVC.swift; sourceTree = "<group>"; };
 		5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.release.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.release.xcconfig"; sourceTree = "<group>"; };
 		A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.debug.xcconfig"; sourceTree = "<group>"; };
 		E14A0F7321A0F0450011779E /* LuckyX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuckyX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 		E14A0F7521A0F0450011779E /* LuckyX */ = {
 			isa = PBXGroup;
 			children = (
+				3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */,
 				E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */,
 				E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */,
 				E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */,
+				3DF28D5B21ABF2FC00BAEC0F /* EditPersonVC.swift in Sources */,
 				E1C36FD121A5B9DB0019DEFC /* LeftPersonCell.swift in Sources */,
 				E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */,
 				E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */,
