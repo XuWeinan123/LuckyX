@@ -8,5 +8,7 @@ target 'LuckyX' do
   # Pods for LuckyX
   pod 'AVOSCloud'
   pod 'RealmSwift'
+  pod 'lottie-ios'
+  pod 'JXPopupView'
 
 end

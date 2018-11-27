@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DC9441721AD65DF0044C92D /* PickColorAnimationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */; };
+		3DC9441A21AD70800044C92D /* 抽颜色方阵动画.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */; };
 		3DF28D5B21ABF2FC00BAEC0F /* EditPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */; };
+		3DF28D5D21ACD58F00BAEC0F /* EditPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF28D5C21ACD58F00BAEC0F /* EditPersonCell.swift */; };
+		3DF28D6221AD176D00BAEC0F /* textFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF28D6121AD176D00BAEC0F /* textFile.m */; };
 		A9A91267067F1605A3BDADBC /* Pods_LuckyX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */; };
 		E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7621A0F0450011779E /* AppDelegate.swift */; };
 		E14A0F7921A0F0450011779E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7821A0F0450011779E /* ViewController.swift */; };
@@ -25,7 +29,12 @@
 
 /* Begin PBXFileReference section */
 		1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuckyX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PickColorAnimationData.json; sourceTree = "<group>"; };
+		3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "抽颜色方阵动画.mp4"; sourceTree = "<group>"; };
 		3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonVC.swift; sourceTree = "<group>"; };
+		3DF28D5C21ACD58F00BAEC0F /* EditPersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonCell.swift; sourceTree = "<group>"; };
+		3DF28D6021AD176C00BAEC0F /* LuckyX-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LuckyX-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DF28D6121AD176D00BAEC0F /* textFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = textFile.m; sourceTree = "<group>"; };
 		5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.release.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.release.xcconfig"; sourceTree = "<group>"; };
 		A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuckyX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX.debug.xcconfig"; sourceTree = "<group>"; };
 		E14A0F7321A0F0450011779E /* LuckyX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuckyX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +77,8 @@
 		E14A0F6A21A0F0450011779E = {
 			isa = PBXGroup;
 			children = (
+				3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */,
+				3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */,
 				E14A0F7521A0F0450011779E /* LuckyX */,
 				E14A0F7421A0F0450011779E /* Products */,
 				58581A26500EAC2E22906872 /* Pods */,
@@ -100,6 +111,9 @@
 				E1AD5A5221A1475E00413E39 /* ImageHelper.swift */,
 				E1AD5A5421A1487600413E39 /* PrizeCell.swift */,
 				E1AD5A5621A1575A00413E39 /* PersonCell.swift */,
+				3DF28D5C21ACD58F00BAEC0F /* EditPersonCell.swift */,
+				3DF28D6121AD176D00BAEC0F /* textFile.m */,
+				3DF28D6021AD176C00BAEC0F /* LuckyX-Bridging-Header.h */,
 			);
 			path = LuckyX;
 			sourceTree = "<group>";
@@ -146,6 +160,7 @@
 				TargetAttributes = {
 					E14A0F7221A0F0450011779E = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -172,9 +187,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC9441A21AD70800044C92D /* 抽颜色方阵动画.mp4 in Resources */,
 				E14A0F8121A0F0470011779E /* LaunchScreen.storyboard in Resources */,
 				E14A0F7E21A0F0470011779E /* Assets.xcassets in Resources */,
 				E14A0F7C21A0F0450011779E /* Main.storyboard in Resources */,
+				3DC9441721AD65DF0044C92D /* PickColorAnimationData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,14 +224,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LuckyX/Pods-LuckyX-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/JXPopupView/JXPopupView.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JXPopupView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -235,7 +256,9 @@
 				E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */,
 				E14A0F7921A0F0450011779E /* ViewController.swift in Sources */,
 				E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */,
+				3DF28D6221AD176D00BAEC0F /* textFile.m in Sources */,
 				E1C36FD221A5B9DB0019DEFC /* RightPersonCell.swift in Sources */,
+				3DF28D5D21ACD58F00BAEC0F /* EditPersonCell.swift in Sources */,
 				E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */,
 				E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */,
 			);
@@ -384,6 +407,7 @@
 			baseConfigurationReference = A673BF34799168A9857F064A /* Pods-LuckyX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BPP589VP97;
 				INFOPLIST_FILE = LuckyX/Info.plist;
@@ -393,6 +417,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.LuckyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LuckyX/LuckyX-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -403,6 +429,7 @@
 			baseConfigurationReference = 5E6ED3BC829DE35D67A81632 /* Pods-LuckyX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BPP589VP97;
 				INFOPLIST_FILE = LuckyX/Info.plist;
@@ -412,6 +439,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xwn.LuckyX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "LuckyX/LuckyX-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

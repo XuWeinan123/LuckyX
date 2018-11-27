@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Lottie
+import AVKit
 
 class Person: Object {
     @objc dynamic var name = ""
@@ -15,6 +17,10 @@ class Person: Object {
     @objc dynamic var isAvailable = true
     @objc dynamic var color = "无"
     @objc dynamic var wish👀 = "无心愿"
+    
+    override static func primaryKey() -> String? {
+        return "number"
+    }
 }
 class Prize: Object{
     @objc dynamic var name = ""
@@ -28,10 +34,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var winnersNumber = 1
     var current🎁 = "无奖品"
     var current🎁Mode = "一等奖"
+    var player = AVPlayer()
+    var playerItem = AVPlayerItem(url: URL(fileURLWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!))
     /**用来保存暂存的抽奖用户名*/
     var personForNow:[Person] = []
     @IBOutlet weak var getSomeLuckyBitchsBtn: UIButton!
     @IBOutlet weak var colorPicker: UISegmentedControl!
+    @IBOutlet weak var animPlaceHolderView: UIView!
     
     @IBOutlet weak var personCollectionViewWidthConstraint: NSLayoutConstraint!
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
@@ -87,28 +96,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PersonCell
             let tempPerson = personsInEgg[indexPath.row]
             cell.label.text = "\(tempPerson.name)\n\(tempPerson.number)"
-//            //如果是一等奖需要改变蛋黄的颜色
-//            print(current🎁Mode)
-//            if current🎁Mode == "一等奖"{
-//                switch tempPerson.number{
-//                    case 0...100:
-//                        cell.bgView.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-//                case 101...200:
-//                    cell.bgView.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-//                case 201...300:
-//                    cell.bgView.backgroundColor = #colorLiteral(red: 0.8922079206, green: 0.8658575416, blue: 0.003233423922, alpha: 1)
-//                case 301...400:
-//                    cell.bgView.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-//                case 401...500:
-//                    cell.bgView.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-//                case 501...600:
-//                    cell.bgView.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-//                default:
-//                    break
-//                }
-//            }else{
                 cell.bgView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-//            }
             cell.unsmash()
             return cell
         }
@@ -124,6 +112,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 current🎁 = 🎁s[currentPrizeIndex].name
                 collectionView.reloadData()
                 print("当前所选择的\(🎁s[currentPrizeIndex].name)")
+                //播放动画
+                player.replaceCurrentItem(with: playerItem)
+                player.play()
                 getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
             }else{
                 for i in 0..<(🎁s.count){
@@ -157,6 +148,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //配置一些UI组件LWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!)
+        //创建ACplayer：负责视频播放
+        player = AVPlayer.init(playerItem: playerItem)
+        player.rate = 1.0//播放速度 播放前设置
+        //创建显示视频的图层
+        let playerLayer = AVPlayerLayer.init(player: player)
+        playerLayer.videoGravity = .resizeAspect
+        playerLayer.frame = self.animPlaceHolderView.bounds
+        //playerLayer.position = self.animPlaceHolderView.layer.position
+        //self.view.layer.addSublayer(playerLayer)
+        self.animPlaceHolderView.layer.addSublayer(playerLayer)
+        //播放
+        player.play()
         //初始化奖品
         switch2🥇()
         collectionView.dataSource = self
