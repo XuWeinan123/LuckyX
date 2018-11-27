@@ -227,68 +227,95 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azB-WO-oBO">
                                 <rect key="frame" x="939" y="146" width="48" height="336"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkH-24-fio">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkH-24-fio">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Wwr-gf-ihm"/>
                                             <constraint firstAttribute="width" constant="48" id="rNm-kZ-KLz"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="绿色"/>
-                                        <state key="selected" backgroundImage="绿色 大"/>
+                                        <state key="selected" backgroundImage="绿色 大">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-8z-hkz">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-8z-hkz">
                                         <rect key="frame" x="0.0" y="48" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="YVg-YL-PTT"/>
                                             <constraint firstAttribute="height" constant="48" id="gc0-Fb-KmO"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="红色"/>
                                         <state key="selected" backgroundImage="红色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g23-gU-gs9"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlG-oU-eFF">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlG-oU-eFF">
                                         <rect key="frame" x="0.0" y="96" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="JAe-DQ-ZCD"/>
                                             <constraint firstAttribute="height" constant="48" id="SnD-Vv-aDN"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="黄色"/>
                                         <state key="selected" backgroundImage="黄色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hqa-Pc-6OX"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-gt-rB9">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-gt-rB9">
                                         <rect key="frame" x="0.0" y="144" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="IDt-Mn-KXB"/>
                                             <constraint firstAttribute="width" constant="48" id="MHf-Ja-uFW"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="青色"/>
                                         <state key="selected" backgroundImage="青色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7C0-zr-GB0"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ny-9i-Kyd">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ny-9i-Kyd">
                                         <rect key="frame" x="0.0" y="192" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="sjl-iE-Ntx"/>
                                             <constraint firstAttribute="height" constant="48" id="wIM-45-NR5"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="蓝色"/>
                                         <state key="selected" backgroundImage="蓝色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FPi-Qf-hve"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-s5-T7S">
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-s5-T7S">
                                         <rect key="frame" x="0.0" y="240" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="t46-tA-6EV"/>
                                             <constraint firstAttribute="width" constant="48" id="tOQ-j0-pZV"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="紫色"/>
                                         <state key="selected" backgroundImage="紫色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DS-gj-gbd"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-gZ-ICV">
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-gZ-ICV">
                                         <rect key="frame" x="0.0" y="288" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="FTj-gU-hFc"/>
                                             <constraint firstAttribute="height" constant="48" id="b7p-yF-7aA"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="彩色"/>
                                         <state key="selected" backgroundImage="彩色 大"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ayf-BK-oSR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,62 +354,90 @@
                                             <constraint firstAttribute="width" constant="48" id="2Sw-Gl-dha"/>
                                             <constraint firstAttribute="height" constant="48" id="nlt-Z2-Rwn"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="三等奖"/>
                                         <state key="selected" backgroundImage="三等奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47a-sf-r6Z"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-6v-KfT">
+                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-6v-KfT">
                                         <rect key="frame" x="0.0" y="48" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="7Jq-b5-hvG"/>
                                             <constraint firstAttribute="width" constant="48" id="Cep-sd-mXH"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="二等奖"/>
                                         <state key="selected" backgroundImage="二等奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w9L-bu-7dv"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-bn-oLd">
+                                    <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-bn-oLd">
                                         <rect key="frame" x="0.0" y="96" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="UqZ-R5-cWf"/>
                                             <constraint firstAttribute="height" constant="48" id="urQ-Q5-iva"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="一等奖"/>
                                         <state key="selected" backgroundImage="一等奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SGZ-LF-yEk"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-mD-poR">
+                                    <button opaque="NO" tag="-3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-mD-poR">
                                         <rect key="frame" x="0.0" y="144" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="Uiu-ND-esy"/>
                                             <constraint firstAttribute="height" constant="48" id="yQj-bI-Kzj"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="特等奖"/>
                                         <state key="selected" backgroundImage="特等奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXv-rN-vm0"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGV-hn-99h">
+                                    <button opaque="NO" tag="-4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGV-hn-99h">
                                         <rect key="frame" x="0.0" y="192" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Lf1-1k-QiM"/>
                                             <constraint firstAttribute="width" constant="48" id="ZnW-t5-0DF"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="红包雨"/>
-                                        <state key="selected" backgroundImage="红包雨"/>
+                                        <state key="selected" backgroundImage="红包雨 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="epO-sL-Qui"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-oI-UCJ">
+                                    <button opaque="NO" tag="-5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-oI-UCJ">
                                         <rect key="frame" x="0.0" y="240" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="9Yx-xG-OHA"/>
                                             <constraint firstAttribute="height" constant="48" id="bdt-i5-LVo"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="阳光普照奖"/>
                                         <state key="selected" backgroundImage="阳光普照奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sr9-Fe-8hz"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDa-SH-lLb">
+                                    <button opaque="NO" tag="-6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDa-SH-lLb">
                                         <rect key="frame" x="0.0" y="288" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="bMx-kp-sT4"/>
                                             <constraint firstAttribute="width" constant="48" id="d3t-YD-yVw"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="作弊"/>
                                         <state key="selected" backgroundImage="作弊 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ql5-D1-7p9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -442,6 +497,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="kGg-eQ-xh4"/>
                     <connections>
+                        <outlet property="LeftBtnFive" destination="jGV-hn-99h" id="zgZ-or-HYY"/>
+                        <outlet property="LeftBtnFour" destination="CTy-mD-poR" id="Lee-Nk-izd"/>
+                        <outlet property="LeftBtnOne" destination="OVz-Sk-LLK" id="9zp-Wy-9qL"/>
+                        <outlet property="LeftBtnSeven" destination="lDa-SH-lLb" id="5lm-h5-XjG"/>
+                        <outlet property="LeftBtnSix" destination="1BL-oI-UCJ" id="DOJ-UT-S5x"/>
+                        <outlet property="LeftBtnThird" destination="1L2-bn-oLd" id="OyS-B3-EZ5"/>
+                        <outlet property="LeftBtnTwo" destination="2tV-6v-KfT" id="0WB-0K-n1Q"/>
+                        <outlet property="RightBtnFive" destination="8Ny-9i-Kyd" id="VzD-TR-AwL"/>
+                        <outlet property="RightBtnFour" destination="dXt-gt-rB9" id="vrS-PX-V0Z"/>
+                        <outlet property="RightBtnOne" destination="VkH-24-fio" id="imv-i8-k8X"/>
+                        <outlet property="RightBtnSeven" destination="2hh-gZ-ICV" id="Kdu-dw-TZR"/>
+                        <outlet property="RightBtnSix" destination="2fs-s5-T7S" id="H81-Ue-4ai"/>
+                        <outlet property="RightBtnThird" destination="mlG-oU-eFF" id="utg-fh-Cc4"/>
+                        <outlet property="RightBtnTwo" destination="Zcg-8z-hkz" id="hX6-04-qup"/>
                         <outlet property="animPlaceHolderView" destination="n8R-37-VkS" id="0za-AX-JKA"/>
                         <outlet property="collectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
                         <outlet property="colorPicker" destination="cVZ-Vu-DyL" id="eJ1-db-0S7"/>
@@ -829,6 +898,7 @@
         <image name="紫色" width="48" height="48"/>
         <image name="紫色 大" width="48" height="48"/>
         <image name="红包雨" width="48" height="48"/>
+        <image name="红包雨 选中" width="48" height="48"/>
         <image name="红色" width="48" height="48"/>
         <image name="红色 大" width="48" height="48"/>
         <image name="绿色" width="48" height="48"/>

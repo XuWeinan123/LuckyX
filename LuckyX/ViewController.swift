@@ -17,7 +17,6 @@ class Person: Object {
     @objc dynamic var isAvailable = true
     @objc dynamic var color = "无"
     @objc dynamic var wish👀 = "无心愿"
-    
     override static func primaryKey() -> String? {
         return "number"
     }
@@ -34,6 +33,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var winnersNumber = 1
     var current🎁 = "无奖品"
     var current🎁Mode = "一等奖"
+    var current🎨 = "全"
     var player = AVPlayer()
     var playerItem = AVPlayerItem(url: URL(fileURLWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!))
     /**用来保存暂存的抽奖用户名*/
@@ -43,6 +43,25 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet weak var animPlaceHolderView: UIView!
     
     @IBOutlet weak var personCollectionViewWidthConstraint: NSLayoutConstraint!
+    
+    //左侧按钮
+    @IBOutlet var LeftBtnOne: UIButton!
+    @IBOutlet var LeftBtnTwo: UIButton!
+    @IBOutlet var LeftBtnThird: UIButton!
+    @IBOutlet var LeftBtnFour: UIButton!
+    @IBOutlet var LeftBtnFive: UIButton!
+    @IBOutlet var LeftBtnSix: UIButton!
+    @IBOutlet var LeftBtnSeven: UIButton!
+    var leftBtns:[UIButton] = []
+    //右侧按钮
+    @IBOutlet var RightBtnOne: UIButton!
+    @IBOutlet var RightBtnTwo: UIButton!
+    @IBOutlet var RightBtnThird: UIButton!
+    @IBOutlet var RightBtnFour: UIButton!
+    @IBOutlet var RightBtnFive: UIButton!
+    @IBOutlet var RightBtnSix: UIButton!
+    @IBOutlet var RightBtnSeven: UIButton!
+    var rightBtns:[UIButton] = []
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
         current🎁Mode = sender.titleForSegment(at: sender.selectedSegmentIndex)!
         print(current🎁Mode)
@@ -72,7 +91,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return personsInEgg.count
         }
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 0{
             if indexPath.row == 🎁s.count{
@@ -113,9 +131,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 collectionView.reloadData()
                 print("当前所选择的\(🎁s[currentPrizeIndex].name)")
                 //播放动画
-                player.replaceCurrentItem(with: playerItem)
+                
+                player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
                 player.play()
-                getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
+                getSomeLuckyBitchs()
             }else{
                 for i in 0..<(🎁s.count){
                     🎁s[i].isSelectd = false
@@ -148,6 +167,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        leftBtns = [LeftBtnOne,LeftBtnTwo,LeftBtnThird,LeftBtnFour,LeftBtnFive,LeftBtnSix,LeftBtnSeven]
+        rightBtns = [RightBtnOne,RightBtnTwo,RightBtnThird,RightBtnFour,RightBtnFive,RightBtnSix,RightBtnSeven]
         //配置一些UI组件LWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!)
         //创建ACplayer：负责视频播放
         player = AVPlayer.init(playerItem: playerItem)
@@ -159,8 +180,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //playerLayer.position = self.animPlaceHolderView.layer.position
         //self.view.layer.addSublayer(playerLayer)
         self.animPlaceHolderView.layer.addSublayer(playerLayer)
-        //播放
-        player.play()
         //初始化奖品
         switch2🥇()
         collectionView.dataSource = self
@@ -169,8 +188,41 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         personCollectionView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
+    @IBAction func sideBtnsSelect(_ sender: UIButton) {
+        if sender.tag <= 0{
+            for btn in leftBtns{
+                btn.isSelected = false
+            }
+        }else if sender.tag >= 1{
+            for btn in rightBtns{
+                btn.isSelected = false
+            }
+            switch sender.tag {
+            case 1:
+                current🎨 = "绿"
+            case 2:
+                current🎨 = "红"
+            case 3:
+                current🎨 = "黄"
+            case 4:
+                current🎨 = "青"
+            case 5:
+                current🎨 = "蓝"
+            case 6:
+                current🎨 = "紫"
+            case 7:
+                current🎨 = "全"
+            default:
+                break
+            }
+            getSomeLuckyBitchs()
+        }
+        sender.isSelected = true
+    }
     @IBAction func colorPickerValueChanged(_ sender: UISegmentedControl) {
-        getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
+        getSomeLuckyBitchs()
     }
     func switch2🥇(){
         colorPicker.isHidden = false
@@ -186,7 +238,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         🎁s.append(PrizeInEgg(name: "R17", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc95vqz1ij30by0bywff.jpg",order:16))
         winnersNumber = 1
         collectionView.reloadData()
-        getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
+        getSomeLuckyBitchs()
         colorPicker.selectedSegmentIndex = 6
     }
     func switch2🥈(){
@@ -203,7 +255,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         🎁s.append(PrizeInEgg(name: "SKII套装", number: 2, imageUrl: "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2217454266,3340342297&fm=26&gp=0.jpg", order: 26))
         winnersNumber = 2
         collectionView.reloadData()
-        getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
+        getSomeLuckyBitchs()
         colorPicker.selectedSegmentIndex = 6
     }
     func switch2🥉(){
@@ -220,7 +272,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         🎁s.append(PrizeInEgg(name: "90分行李箱", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxh3vb58voj30by0bydgd.jpg", order: 36))
         winnersNumber = 3
         collectionView.reloadData()
-        getSomeLuckyBitchs(getSomeLuckyBitchsBtn)
+        getSomeLuckyBitchs()
         colorPicker.selectedSegmentIndex = 6
     }
     func switch2🎖(){
@@ -231,7 +283,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         collectionView.reloadData()
         colorPicker.selectedSegmentIndex = 6
     }
-    @IBAction func getSomeLuckyBitchs(_ sender: Any) {
+    func getSomeLuckyBitchs() {
         personForNow.removeAll()
         //如果是阳光普照奖，直接出名字
         if current🎁Mode == "阳光普照奖"{
@@ -247,7 +299,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }else{
             personsInEgg.removeAll()
             for i in 0..<winnersNumber{
-                let tempPerson = getALuckyBitchByColor(color: colorPicker.titleForSegment(at: colorPicker.selectedSegmentIndex)!)
+                let tempPerson = getALuckyBitchByColor(color: current🎨)
                 personsInEgg.append(ViewController.PersonInEgg(name: tempPerson.name, number: tempPerson.number))
             }
             personCollectionView.reloadData()
@@ -368,77 +420,3 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
 
 }
-
-
-
-////
-////  ViewController.swift
-////  LuckyX
-////
-////  Created by XuWeinan on 2018/11/16.
-////  Copyright © 2018 XuWeinan. All rights reserved.
-////
-//
-//import UIKit
-//import RealmSwift
-//class Person: Object {
-//    @objc dynamic var name = ""
-//    @objc dynamic var number = -1
-//    @objc dynamic var isAvailable = true
-//}
-//class Prize: Object{
-//    @objc dynamic var name = ""
-//    @objc dynamic var masterNumber = -1
-//}
-//
-//class ViewController: UIViewController {
-//
-//    @IBOutlet weak var theRichGuy: UILabel!
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        let paths =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-//        print(paths)
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
-//
-//    @IBAction func letMeRich(_ sender: UIButton) {
-//        //获取到当前可用的用户
-//        let realm = try! Realm()
-//        var availablePerson = realm.objects(Person.self).filter("isAvailable = true")
-//        print("数目\(availablePerson.count)")
-//        if availablePerson.count>0{
-//            //从中抽取一个用户
-//            var availablePersonArray = availablePerson.sorted { (person1, person2) -> Bool in
-//                return arc4random() % 2 > 0
-//            }
-//            let luckyperson = availablePersonArray.removeFirst()
-//            try! realm.write {
-//                luckyperson.isAvailable = false
-//            }
-//            theRichGuy.text = luckyperson.name
-//            print(luckyperson.name)
-//        }
-//    }
-//    @IBAction func resetPersons(_ sender: UIButton) {
-//        //删除所有对象
-//        let realm = try! Realm()
-//        try! realm.write{
-//            realm.deleteAll()
-//        }
-//        //添加新对象
-//        let personNames:[String] = ["赵〇〇","赵〇一","赵〇二","赵〇三","赵〇四","赵〇五","赵〇六","赵〇七","赵〇八","赵〇九","赵一〇","赵一一","赵一二","赵一三","赵一四","赵一五","赵一六","赵一七","赵一八","赵一九","赵二〇","赵二一","赵二二","赵二三","赵二四","赵二五","赵二六","赵二七","赵二八","赵二九","赵三〇","赵三一","赵三二","赵三三","赵三四","赵三五","赵三六","赵三七","赵三八","赵三九","赵四〇","赵四一","赵四二","赵四三","赵四四","赵四五","赵四六","赵四七","赵四八","赵四九","赵五〇","赵五一","赵五二","赵五三","赵五四","赵五五","赵五六","赵五七","赵五八","赵五九","赵六〇","赵六一","赵六二","赵六三","赵六四","赵六五","赵六六","赵六七","赵六八","赵六九","赵七〇","赵七一","赵七二","赵七三","赵七四","赵七五","赵七六","赵七七","赵七八","赵七九","赵八〇","赵八一","赵八二","赵八三","赵八四","赵八五","赵八六","赵八七","赵八八","赵八九","赵九〇","赵九一","赵九二","赵九三","赵九四","赵九五","赵九六","赵九七","赵九八","赵九九","钱〇〇","钱〇一","钱〇二","钱〇三","钱〇四","钱〇五","钱〇六","钱〇七","钱〇八","钱〇九","钱一〇","钱一一","钱一二","钱一三","钱一四","钱一五","钱一六","钱一七","钱一八","钱一九","钱二〇","钱二一","钱二二","钱二三","钱二四","钱二五","钱二六","钱二七","钱二八","钱二九","钱三〇","钱三一","钱三二","钱三三","钱三四","钱三五","钱三六","钱三七","钱三八","钱三九","钱四〇","钱四一","钱四二","钱四三","钱四四","钱四五","钱四六","钱四七","钱四八","钱四九","钱五〇","钱五一","钱五二","钱五三","钱五四","钱五五","钱五六","钱五七","钱五八","钱五九","钱六〇","钱六一","钱六二","钱六三","钱六四","钱六五","钱六六","钱六七","钱六八","钱六九","钱七〇","钱七一","钱七二","钱七三","钱七四","钱七五","钱七六","钱七七","钱七八","钱七九","钱八〇","钱八一","钱八二","钱八三","钱八四","钱八五","钱八六","钱八七","钱八八","钱八九","钱九〇","钱九一","钱九二","钱九三","钱九四","钱九五","钱九六","钱九七","钱九八","钱九九","孙〇〇","孙〇一","孙〇二","孙〇三","孙〇四","孙〇五","孙〇六","孙〇七","孙〇八","孙〇九","孙一〇","孙一一","孙一二","孙一三","孙一四","孙一五","孙一六","孙一七","孙一八","孙一九","孙二〇","孙二一","孙二二","孙二三","孙二四","孙二五","孙二六","孙二七","孙二八","孙二九","孙三〇","孙三一","孙三二","孙三三","孙三四","孙三五","孙三六","孙三七","孙三八","孙三九","孙四〇","孙四一","孙四二","孙四三","孙四四","孙四五","孙四六","孙四七","孙四八","孙四九","孙五〇","孙五一","孙五二","孙五三","孙五四","孙五五","孙五六","孙五七","孙五八","孙五九","孙六〇","孙六一","孙六二","孙六三","孙六四","孙六五","孙六六","孙六七","孙六八","孙六九","孙七〇","孙七一","孙七二","孙七三","孙七四","孙七五","孙七六","孙七七","孙七八","孙七九","孙八〇","孙八一","孙八二","孙八三","孙八四","孙八五","孙八六","孙八七","孙八八","孙八九","孙九〇","孙九一","孙九二","孙九三","孙九四","孙九五","孙九六","孙九七","孙九八","孙九九","李〇〇","李〇一","李〇二","李〇三","李〇四","李〇五","李〇六","李〇七","李〇八","李〇九","李一〇","李一一","李一二","李一三","李一四","李一五","李一六","李一七","李一八","李一九","李二〇","李二一","李二二","李二三","李二四","李二五","李二六","李二七","李二八","李二九","李三〇","李三一","李三二","李三三","李三四","李三五","李三六","李三七","李三八","李三九","李四〇","李四一","李四二","李四三","李四四","李四五","李四六","李四七","李四八","李四九","李五〇","李五一","李五二","李五三","李五四","李五五","李五六","李五七","李五八","李五九","李六〇","李六一","李六二","李六三","李六四","李六五","李六六","李六七","李六八","李六九","李七〇","李七一","李七二","李七三","李七四","李七五","李七六","李七七","李七八","李七九","李八〇","李八一","李八二","李八三","李八四","李八五","李八六","李八七","李八八","李八九","李九〇","李九一","李九二","李九三","李九四","李九五","李九六","李九七","李九八","李九九"]
-//        for i in 0..<personNames.count{
-//            let personTest = Person()
-//            personTest.name = personNames[i]
-//            personTest.number = i
-//            personTest.isAvailable = true
-//            let realm = try! Realm()
-//            try! realm.write {
-//                realm.add(personTest)
-//            }
-//        }
-//    }
-//
-//
-//}
-//
