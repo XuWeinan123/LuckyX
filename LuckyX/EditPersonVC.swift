@@ -39,17 +39,17 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
         let tempPerson = editPersons[indexPath.row]
         switch tempPerson.color {
         case "红":
-            cell.color.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        case "橙":
-            cell.color.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+            cell.color.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.2039215686, blue: 0.2784313725, alpha: 1)
+        case "绿":
+            cell.color.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.8196078431, blue: 0.5058823529, alpha: 1)
         case "黄":
-            cell.color.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+            cell.color.backgroundColor = #colorLiteral(red: 1, green: 0.7960784314, blue: 0.1058823529, alpha: 1)
         case "蓝":
-            cell.color.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+            cell.color.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         case "紫":
-            cell.color.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-        case "粉":
-            cell.color.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+            cell.color.backgroundColor = #colorLiteral(red: 0.4705882353, green: 0.1568627451, blue: 1, alpha: 1)
+        case "青":
+            cell.color.backgroundColor = #colorLiteral(red: 0.2196078431, green: 0.8431372549, blue: 0.8352941176, alpha: 1)
         default:
             cell.color.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }

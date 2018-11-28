@@ -12,6 +12,7 @@ class PersonCell: UICollectionViewCell {
     @IBOutlet var goldEggImage: UIImageView!
     @IBOutlet var bgView: UIView!
     @IBOutlet var label: UILabel!
+    @IBOutlet weak var eggBgView: UIImageView!
     override func awakeFromNib() {
         bgView.layer.cornerRadius = bgView.frame.height/2
     }

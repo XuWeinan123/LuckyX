@@ -14,6 +14,7 @@ class PrizeCell: UICollectionViewCell {
     @IBOutlet var selectMask: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        prizeImageView.layer.cornerRadius = 12
     }
     
 }

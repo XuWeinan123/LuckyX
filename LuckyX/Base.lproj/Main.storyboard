@@ -34,6 +34,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-UI-dam">
+                                <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="奖品栏" translatesAutoresizingMaskIntoConstraints="NO" id="IpB-KT-ypC">
                                 <rect key="frame" x="0.0" y="648" width="1112" height="186"/>
                                 <constraints>
@@ -42,7 +45,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="72g-8E-A7l">
                                 <rect key="frame" x="0.0" y="660" width="1112" height="174"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="174" id="m20-gT-PnE"/>
                                 </constraints>
@@ -60,7 +63,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z52-Cw-RXS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z52-Cw-RXS">
                                                     <rect key="frame" x="37" y="20" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="A6a-Yh-Y6T"/>
@@ -102,44 +105,13 @@
                                 <rect key="frame" x="230" y="38" width="74" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
-                            <button opaque="NO" alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
+                            <button opaque="NO" alpha="0.050000000000000003" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
                                 <rect key="frame" x="520" y="155" width="72" height="72"/>
                                 <state key="normal" backgroundImage="刷新"/>
                                 <connections>
                                     <action selector="getSomeLuckyBitchs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXa-z4-8MS"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zzd-Ks-X6u">
-                                <rect key="frame" x="9" y="144" width="409" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="一等奖"/>
-                                    <segment title="二等奖"/>
-                                    <segment title="三等奖"/>
-                                    <segment title="阳光普照奖"/>
-                                    <segment title="👑特等奖"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KI6-bX-4rS"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="6" translatesAutoresizingMaskIntoConstraints="NO" id="cVZ-Vu-DyL">
-                                <rect key="frame" x="452" y="584" width="208" height="29"/>
-                                <segments>
-                                    <segment title="红"/>
-                                    <segment title="橙"/>
-                                    <segment title="黄"/>
-                                    <segment title="蓝"/>
-                                    <segment title="紫"/>
-                                    <segment title="粉"/>
-                                    <segment title="全"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="colorPickerValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Nqk-1m-uuZ"/>
-                                </connections>
-                            </segmentedControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="电视机" translatesAutoresizingMaskIntoConstraints="NO" id="Wsj-01-WIm">
                                 <rect key="frame" x="217" y="104" width="678" height="516"/>
                                 <constraints>
@@ -154,14 +126,14 @@
                                     <constraint firstAttribute="height" constant="360" id="KPX-dX-WKc"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.10000000000000001" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JfX-Av-qv2">
-                                <rect key="frame" x="206" y="221" width="700" height="200"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JfX-Av-qv2">
+                                <rect key="frame" x="246" y="221" width="620" height="200"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.1176470588" blue="0.078431372550000003" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="j1f-Gp-aua"/>
-                                    <constraint firstAttribute="width" constant="700" id="mch-0E-0dA"/>
+                                    <constraint firstAttribute="width" constant="620" id="mch-0E-0dA"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="50" id="BED-HS-h8d">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="BED-HS-h8d">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -178,11 +150,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsZ-sx-cBl">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="🍳" translatesAutoresizingMaskIntoConstraints="NO" id="XDJ-3A-6Ib">
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acG-aH-ze6">
-                                                            <rect key="frame" x="54.5" y="74" width="91" height="72"/>
+                                                            <rect key="frame" x="54.5" y="78.5" width="91.5" height="43"/>
                                                             <string key="text">徐炜楠
-360</string>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+80233577</string>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -190,7 +165,11 @@
                                                     <color key="backgroundColor" red="0.97254901960784312" green="0.83921568627450982" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="acG-aH-ze6" firstAttribute="centerX" secondItem="LsZ-sx-cBl" secondAttribute="centerX" id="9L5-Z0-blS"/>
-                                                        <constraint firstItem="acG-aH-ze6" firstAttribute="centerY" secondItem="LsZ-sx-cBl" secondAttribute="centerY" multiplier="1.1:1" id="HYi-Iz-SxV"/>
+                                                        <constraint firstItem="acG-aH-ze6" firstAttribute="centerY" secondItem="LsZ-sx-cBl" secondAttribute="centerY" id="HYi-Iz-SxV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XDJ-3A-6Ib" secondAttribute="trailing" id="dHh-6m-vb3"/>
+                                                        <constraint firstItem="XDJ-3A-6Ib" firstAttribute="leading" secondItem="LsZ-sx-cBl" secondAttribute="leading" id="kg4-Ga-vfc"/>
+                                                        <constraint firstItem="XDJ-3A-6Ib" firstAttribute="top" secondItem="LsZ-sx-cBl" secondAttribute="top" id="lyh-d7-hMw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="XDJ-3A-6Ib" secondAttribute="bottom" id="wc5-0p-R09"/>
                                                     </constraints>
                                                 </view>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="金蛋" translatesAutoresizingMaskIntoConstraints="NO" id="0fD-Ft-H8F">
@@ -210,6 +189,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="bgView" destination="LsZ-sx-cBl" id="smM-9u-nS4"/>
+                                            <outlet property="eggBgView" destination="XDJ-3A-6Ib" id="I4G-El-TvO"/>
                                             <outlet property="goldEggImage" destination="0fD-Ft-H8F" id="hSv-P3-ZkL"/>
                                             <outlet property="label" destination="acG-aH-ze6" id="O7y-Qk-itd"/>
                                         </connections>
@@ -227,7 +207,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azB-WO-oBO">
                                 <rect key="frame" x="939" y="146" width="48" height="336"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkH-24-fio">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkH-24-fio">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Wwr-gf-ihm"/>
@@ -238,6 +218,9 @@
                                         <state key="selected" backgroundImage="绿色 大">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qOq-Ir-X5Q"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-8z-hkz">
                                         <rect key="frame" x="0.0" y="48" width="48" height="48"/>
@@ -304,7 +287,7 @@
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DS-gj-gbd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-gZ-ICV">
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-gZ-ICV">
                                         <rect key="frame" x="0.0" y="288" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="FTj-gU-hFc"/>
@@ -348,7 +331,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="And-gR-8Be">
                                 <rect key="frame" x="125" y="146" width="48" height="336"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVz-Sk-LLK">
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVz-Sk-LLK">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="2Sw-Gl-dha"/>
@@ -359,6 +342,7 @@
                                         <state key="selected" backgroundImage="三等奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47a-sf-r6Z"/>
+                                            <action selector="switch2🥉:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Roi-De-IbB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-6v-KfT">
@@ -372,6 +356,7 @@
                                         <state key="selected" backgroundImage="二等奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w9L-bu-7dv"/>
+                                            <action selector="switch2🥈:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IA1-WQ-rNV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1L2-bn-oLd">
@@ -385,6 +370,7 @@
                                         <state key="selected" backgroundImage="一等奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SGZ-LF-yEk"/>
+                                            <action selector="switch2🥇:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4sZ-mf-lGP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-mD-poR">
@@ -424,6 +410,7 @@
                                         <state key="selected" backgroundImage="阳光普照奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sr9-Fe-8hz"/>
+                                            <action selector="switch2🎖:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fgc-Qu-YVt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDa-SH-lLb">
@@ -470,23 +457,24 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="IpB-KT-ypC" firstAttribute="top" secondItem="cVZ-Vu-DyL" secondAttribute="bottom" constant="36" id="5bf-g2-vgl"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1:1.3" id="6qF-bM-fiw"/>
                             <constraint firstItem="And-gR-8Be" firstAttribute="centerY" secondItem="n8R-37-VkS" secondAttribute="centerY" id="6zJ-z1-dwy"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Om-8o-kzl"/>
                             <constraint firstItem="n8R-37-VkS" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="trailing" constant="63" id="8UZ-9F-4NN"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="104" id="9iU-vN-a54"/>
                             <constraint firstItem="azB-WO-oBO" firstAttribute="leading" secondItem="n8R-37-VkS" secondAttribute="trailing" constant="63" id="9mW-Z8-sLH"/>
-                            <constraint firstItem="cVZ-Vu-DyL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="452" id="BbS-Wq-DCJ"/>
+                            <constraint firstItem="Wsj-01-WIm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="trailing" constant="-895" id="Cdq-pd-EAR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qth-UI-dam" secondAttribute="trailing" id="JLT-DT-fkJ"/>
+                            <constraint firstItem="Qth-UI-dam" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JSq-OC-eDs"/>
                             <constraint firstItem="n8R-37-VkS" firstAttribute="leading" secondItem="Wsj-01-WIm" secondAttribute="leading" constant="19" id="KgC-9i-ThS"/>
+                            <constraint firstItem="Qth-UI-dam" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Vss-jU-LKi"/>
                             <constraint firstItem="n8R-37-VkS" firstAttribute="top" secondItem="Wsj-01-WIm" secondAttribute="top" constant="30" id="W04-kq-P6L"/>
-                            <constraint firstItem="cVZ-Vu-DyL" firstAttribute="centerX" secondItem="72g-8E-A7l" secondAttribute="centerX" id="gcY-RV-Jvu"/>
+                            <constraint firstAttribute="bottom" secondItem="Qth-UI-dam" secondAttribute="bottom" id="YWB-RQ-eEs"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
                             <constraint firstItem="NRx-uF-1jy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="hvE-Hx-Nr7"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="trailing" secondItem="n8R-37-VkS" secondAttribute="trailing" constant="19" id="ifm-zD-PZ8"/>
                             <constraint firstItem="IpB-KT-ypC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jl7-4Q-3D2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72g-8E-A7l" secondAttribute="trailing" id="l4s-oz-h06"/>
-                            <constraint firstItem="cVZ-Vu-DyL" firstAttribute="centerX" secondItem="NRx-uF-1jy" secondAttribute="centerX" id="mQq-K2-kDh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpB-KT-ypC" secondAttribute="trailing" id="oV3-oo-Xrq"/>
                             <constraint firstItem="72g-8E-A7l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p2W-a3-Mro"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IpB-KT-ypC" secondAttribute="bottom" id="rsd-tl-Yza"/>
@@ -513,7 +501,6 @@
                         <outlet property="RightBtnTwo" destination="Zcg-8z-hkz" id="hX6-04-qup"/>
                         <outlet property="animPlaceHolderView" destination="n8R-37-VkS" id="0za-AX-JKA"/>
                         <outlet property="collectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
-                        <outlet property="colorPicker" destination="cVZ-Vu-DyL" id="eJ1-db-0S7"/>
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
@@ -880,6 +867,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="1134" height="851"/>
         <image name="一等奖" width="48" height="48"/>
         <image name="一等奖 选中" width="48" height="48"/>
         <image name="三等奖" width="48" height="48"/>
@@ -913,5 +901,6 @@
         <image name="青色 大" width="48" height="48"/>
         <image name="黄色" width="48" height="48"/>
         <image name="黄色 大" width="48" height="48"/>
+        <image name="🍳" width="200" height="200"/>
     </resources>
 </document>
