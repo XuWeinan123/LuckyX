@@ -32,7 +32,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var currentPrizeIndex = -1
     var winnersNumber = 1
     var current🎁 = "无奖品"
-    var current🎁Mode = "三等奖"
+    @IBOutlet var current🎁Mode:UILabel!
     var current🎨 = "全"
     var player = AVPlayer()
     var playerItem = AVPlayerItem(url: URL(fileURLWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!))
@@ -91,7 +91,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PersonCell
             let tempPerson = personsInEgg[indexPath.row]
             cell.label.text = "\(tempPerson.name)\n\(tempPerson.number)"
-            if current🎁Mode == "三等奖"{
+            if current🎁Mode.text == "三等奖"{
                 cell.goldEggImage.image = UIImage(named: "\(tempPerson.color)蛋")
             }else{
                 cell.goldEggImage.image = UIImage(named: "金蛋")
@@ -101,6 +101,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //奖品选择
         if collectionView.tag == 0{
             if indexPath.row != 🎁s.count{
                 for i in 0..<🎁s.count{
@@ -117,7 +118,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 player.play()
                 getSomeLuckyBitchs()
                 personCollectionView.alpha = 0
-                UIView.animate(withDuration: 0.3, delay: 2.7, options: UIView.AnimationOptions.curveLinear, animations: {
+                UIView.animate(withDuration: 0.2, delay: 1.5, options: UIView.AnimationOptions.curveLinear, animations: {
                     self.personCollectionView.alpha = 1
                 }, completion: nil)
             }else{
@@ -127,6 +128,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 print("添加新奖品")
             }
         }else{
+            //砸蛋
             if current🎁 == "无奖品"{
                 let alertController = UIAlertController.init(title: "无奖品", message: "请在下方奖品栏选择合适奖品", preferredStyle:.alert)
                 let cancel = UIAlertAction.init(title: "好的", style: UIAlertAction.Style.cancel) { (action:UIAlertAction) ->() in
@@ -135,11 +137,18 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 alertController.addAction(cancel);
                 self.present(alertController, animated: true, completion: nil)
             }else{
-            (collectionView.cellForItem(at: indexPath) as! PersonCell).smash()
-            let realm = try! Realm()
-            try! realm.write {
-                personForNow[indexPath.row].isAvailable = false
-            }
+                (collectionView.cellForItem(at: indexPath) as! PersonCell).smash()
+                let realm = try! Realm()
+                try! realm.write {
+                    personForNow[indexPath.row].isAvailable = false
+                }
+                //写入奖品
+                let prize = Prize()
+                prize.name = current🎁
+                prize.masterNumber = personForNow[indexPath.row].number
+                try! realm.write {
+                    realm.add(prize)
+                }
             }
         }
     }
@@ -152,7 +161,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        leftBtns = [LeftBtnOne,LeftBtnTwo,LeftBtnThird,LeftBtnFour,LeftBtnFive,LeftBtnSix,LeftBtnSeven]
+        leftBtns = [LeftBtnOne,LeftBtnTwo,LeftBtnThird,LeftBtnFour,LeftBtnFive,LeftBtnSix]
         rightBtns = [RightBtnOne,RightBtnTwo,RightBtnThird,RightBtnFour,RightBtnFive,RightBtnSix,RightBtnSeven]
         //配置一些UI组件LWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!)
         //创建ACplayer：负责视频播放
@@ -212,7 +221,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = true
         }
         
-        current🎁Mode = "一等奖"
+        current🎁Mode.text = "一等奖"
         personCollectionView.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 200
@@ -234,7 +243,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = true
         }
         
-        current🎁Mode = "二等奖"
+        current🎁Mode.text = "二等奖"
         personCollectionView.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 410
@@ -256,7 +265,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = false
         }
         
-        current🎁Mode = "三等奖"
+        current🎁Mode.text = "三等奖"
         personCollectionView.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 620
@@ -278,17 +287,44 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = true
         }
         
-        current🎁Mode = "阳光普照奖"
+        current🎁Mode.text = "阳光普照奖"
         personCollectionView.isHidden = true
         🎁s.removeAll()
         🎁s.append(PrizeInEgg(name: "100元购物卡", number: 88, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh3waxw10j309q09qt9b.jpg", order: 41))
         collectionView.reloadData()
         sideBtnsSelect(RightBtnSeven)
     }
+    @IBAction func switch2🌧(_ sender: UIButton){
+        //把右侧按钮都enable
+        for btn in rightBtns{
+            btn.isEnabled = true
+        }
+        
+        current🎁Mode.text = "红包雨"
+        personCollectionView.isHidden = false
+        current🎁 = "无奖品"
+        personCollectionViewWidthConstraint.constant = 410
+        🎁s.removeAll()
+        🎁s.append(PrizeInEgg(name: "陈景远的红包", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2oyhqqrj305k05kaa2.jpg", order: 51))
+        🎁s.append(PrizeInEgg(name: "卓世杰的红包", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ov4zdwj305k05kt8p.jpg", order: 52))
+        🎁s.append(PrizeInEgg(name: "谢琴的红包", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxp2opdlkej305k05kweh.jpg", order: 53))
+        🎁s.append(PrizeInEgg(name: "张广伟的红包", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2okejv5j305k05kweh.jpg", order: 54))
+        🎁s.append(PrizeInEgg(name: "陈希的红包", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ofcc13j305k05kq2x.jpg", order: 55))
+        🎁s.append(PrizeInEgg(name: "吴振宇的红包", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2o91jndj305k05k0sq.jpg", order: 56))
+        🎁s.append(PrizeInEgg(name: "黄轶轩的红包", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
+        🎁s.append(PrizeInEgg(name: "张玉的红包", number: 2, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
+        🎁s.append(PrizeInEgg(name: "刘齐虎的红包", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
+        winnersNumber = 2
+        collectionView.reloadData()
+        getSomeLuckyBitchs()
+        sideBtnsSelect(RightBtnSeven)
+    }
     func getSomeLuckyBitchs() {
+        let realm = try! Realm()
+
         personForNow.removeAll()
         //如果是阳光普照奖，直接出名字
-        if current🎁Mode == "阳光普照奖"{
+        if current🎁Mode.text == "阳光普照奖"{
             current🎁 = "100元购物卡"
             var sunshinePersons:[String] = []
             for _ in 0..<100{
@@ -298,14 +334,22 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             for sunshinePerson in sunshinePersons{
                 print(sunshinePerson)
             }
-        }else if current🎁Mode == "三等奖"{
+        //如果是三等奖，需要先选颜色
+        }else if current🎁Mode.text == "三等奖"{
             personsInEgg.removeAll()
             var tempColor = ["绿","红","黄","青","蓝","紫"][Int(arc4random_uniform(UInt32(6)))]
             for _ in 0..<winnersNumber{
                 let tempPerson = getALuckyBitchByColor(color: tempColor)
                 personsInEgg.append(ViewController.PersonInEgg(name: tempPerson.name, number: tempPerson.number,color:tempPerson.color))
             }
+            //抽完统统恢复可用状态
+            for person in personForNow{
+                try! realm.write {
+                    person.isAvailable = true
+                }
+            }
             personCollectionView.reloadData()
+        //剩下一二等奖
         }else{
             personsInEgg.removeAll()
             for _ in 0..<winnersNumber{
@@ -313,12 +357,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 personsInEgg.append(ViewController.PersonInEgg(name: tempPerson.name, number: tempPerson.number,color:tempPerson.color))
             }
             personCollectionView.reloadData()
+            //抽完统统恢复可用状态
+            for person in personForNow{
+                try! realm.write {
+                    person.isAvailable = true
+                }
+            }
         }
-        
-//        //仅供观察
-//        for person in personForNow{
-//            print("PersonForNow:\(person.name)")
-//        }
     }
     @IBAction func resetPerson(_ sender: UIButton) {
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
@@ -367,12 +412,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 return arc4random() % 2 > 0
             }
             let luckyperson = availablePersonArray.removeFirst()
-            let prize = Prize()
-            prize.name = current🎁
-            prize.masterNumber = luckyperson.number
+            
             try! realm.write {
                 personForNow.append(luckyperson)
-                realm.add(prize)
+                luckyperson.isAvailable = false
             }
             print(luckyperson.name)
             return PersonInEgg(name: luckyperson.name, number: luckyperson.number,color:luckyperson.color)
@@ -394,18 +437,18 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 return arc4random() % 2 > 0
             }
             let luckyperson = availablePersonArray.removeFirst()
-            let prize = Prize()
-            prize.name = current🎁
-            prize.masterNumber = luckyperson.number
             try! realm.write {
                 personForNow.append(luckyperson)
-                realm.add(prize)
+                luckyperson.isAvailable = false
             }
             print(luckyperson.name)
             return PersonInEgg(name: luckyperson.name, number: luckyperson.number,color:luckyperson.color)
         }else{
             return PersonInEgg(name: "没有人可以抽了", number: -1,color:"全")
         }
+    }
+    @IBAction func cheatingSwitch(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     struct PrizeInEgg {
         var name = "奖品"
@@ -430,5 +473,5 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             self.color = color
         }
     }
-
+    
 }

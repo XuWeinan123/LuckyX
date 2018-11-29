@@ -154,15 +154,15 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acG-aH-ze6">
-                                                            <rect key="frame" x="54.5" y="78.5" width="91.5" height="43"/>
+                                                            <rect key="frame" x="24.5" y="64" width="151" height="72"/>
                                                             <string key="text">徐炜楠
 80233577</string>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.97254901960784312" green="0.83921568627450982" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="acG-aH-ze6" firstAttribute="centerX" secondItem="LsZ-sx-cBl" secondAttribute="centerX" id="9L5-Z0-blS"/>
                                                         <constraint firstItem="acG-aH-ze6" firstAttribute="centerY" secondItem="LsZ-sx-cBl" secondAttribute="centerY" id="HYi-Iz-SxV"/>
@@ -397,6 +397,7 @@
                                         <state key="selected" backgroundImage="红包雨 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="epO-sL-Qui"/>
+                                            <action selector="switch2🌧:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jOd-6z-2Vy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-oI-UCJ">
@@ -423,7 +424,7 @@
                                         <state key="normal" backgroundImage="作弊"/>
                                         <state key="selected" backgroundImage="作弊 选中"/>
                                         <connections>
-                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ql5-D1-7p9"/>
+                                            <action selector="cheatingSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZm-il-BNz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -454,9 +455,16 @@
                                     <constraint firstItem="1BL-oI-UCJ" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="vl0-Sg-Tbr"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="三等奖" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2j-k1-72w">
+                                <rect key="frame" x="530" y="109" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="x2j-k1-72w" firstAttribute="bottom" secondItem="n8R-37-VkS" secondAttribute="top" constant="-4" id="4RO-Y6-npU"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1:1.3" id="6qF-bM-fiw"/>
                             <constraint firstItem="And-gR-8Be" firstAttribute="centerY" secondItem="n8R-37-VkS" secondAttribute="centerY" id="6zJ-z1-dwy"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Om-8o-kzl"/>
@@ -469,6 +477,7 @@
                             <constraint firstItem="n8R-37-VkS" firstAttribute="leading" secondItem="Wsj-01-WIm" secondAttribute="leading" constant="19" id="KgC-9i-ThS"/>
                             <constraint firstItem="Qth-UI-dam" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Vss-jU-LKi"/>
                             <constraint firstItem="n8R-37-VkS" firstAttribute="top" secondItem="Wsj-01-WIm" secondAttribute="top" constant="30" id="W04-kq-P6L"/>
+                            <constraint firstItem="x2j-k1-72w" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wlg-VO-ic2"/>
                             <constraint firstAttribute="bottom" secondItem="Qth-UI-dam" secondAttribute="bottom" id="YWB-RQ-eEs"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
                             <constraint firstItem="NRx-uF-1jy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="hvE-Hx-Nr7"/>
@@ -501,6 +510,7 @@
                         <outlet property="RightBtnTwo" destination="Zcg-8z-hkz" id="hX6-04-qup"/>
                         <outlet property="animPlaceHolderView" destination="n8R-37-VkS" id="0za-AX-JKA"/>
                         <outlet property="collectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
+                        <outlet property="current🎁Mode" destination="x2j-k1-72w" id="gaJ-am-kly"/>
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
