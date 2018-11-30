@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DA612B921B0CF6600DF0F9C /* 卡通人物狂欢撒钱.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DA612B821B0CF6100DF0F9C /* 卡通人物狂欢撒钱.mp4 */; };
 		3DC9441721AD65DF0044C92D /* PickColorAnimationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */; };
 		3DC9441A21AD70800044C92D /* 抽颜色方阵动画.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */; };
 		3DF28D5B21ABF2FC00BAEC0F /* EditPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		1A1AC9117AC1375AF72B1939 /* Pods_LuckyX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuckyX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DA612B821B0CF6100DF0F9C /* 卡通人物狂欢撒钱.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "卡通人物狂欢撒钱.mp4"; sourceTree = "<group>"; };
 		3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PickColorAnimationData.json; sourceTree = "<group>"; };
 		3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "抽颜色方阵动画.mp4"; sourceTree = "<group>"; };
 		3DF28D5A21ABF2FC00BAEC0F /* EditPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonVC.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				3DC9441621AD65DE0044C92D /* PickColorAnimationData.json */,
+				3DA612B821B0CF6100DF0F9C /* 卡通人物狂欢撒钱.mp4 */,
 				3DC9441821AD6E780044C92D /* 抽颜色方阵动画.mp4 */,
 				E14A0F7521A0F0450011779E /* LuckyX */,
 				E14A0F7421A0F0450011779E /* Products */,
@@ -187,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA612B921B0CF6600DF0F9C /* 卡通人物狂欢撒钱.mp4 in Resources */,
 				3DC9441A21AD70800044C92D /* 抽颜色方阵动画.mp4 in Resources */,
 				E14A0F8121A0F0470011779E /* LaunchScreen.storyboard in Resources */,
 				E14A0F7E21A0F0470011779E /* Assets.xcassets in Resources */,

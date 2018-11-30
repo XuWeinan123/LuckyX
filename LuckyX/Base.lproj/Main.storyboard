@@ -101,10 +101,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
-                                <rect key="frame" x="230" y="38" width="74" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </button>
                             <button opaque="NO" alpha="0.050000000000000003" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
                                 <rect key="frame" x="520" y="155" width="72" height="72"/>
                                 <state key="normal" backgroundImage="刷新"/>
@@ -196,10 +192,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-xU-5fT">
-                                <rect key="frame" x="1004" y="70" width="74" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="名单设置"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bv-xU-5fT">
+                                <rect key="frame" x="988" y="94" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="aMs-LM-tOp"/>
+                                    <constraint firstAttribute="height" constant="40" id="u31-Li-KVn"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="名单设置"/>
                                 <connections>
                                     <segue destination="3eX-rq-kO1" kind="push" id="obW-L8-fjc"/>
                                 </connections>
@@ -342,7 +341,7 @@
                                         <state key="selected" backgroundImage="三等奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="47a-sf-r6Z"/>
-                                            <action selector="switch2🥉:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Roi-De-IbB"/>
+                                            <action selector="switch2🥉:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1p6-Hy-Php"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tV-6v-KfT">
@@ -384,10 +383,25 @@
                                         <state key="selected" backgroundImage="特等奖 选中"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXv-rN-vm0"/>
+                                            <action selector="switch2💥:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b6s-z3-VU4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="-5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-oI-UCJ">
+                                        <rect key="frame" x="0.0" y="192" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="9Yx-xG-OHA"/>
+                                            <constraint firstAttribute="height" constant="48" id="bdt-i5-LVo"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" backgroundImage="阳光普照奖"/>
+                                        <state key="selected" backgroundImage="阳光普照奖 选中"/>
+                                        <connections>
+                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sr9-Fe-8hz"/>
+                                            <action selector="switch2🌞:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fgc-Qu-YVt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="-4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGV-hn-99h">
-                                        <rect key="frame" x="0.0" y="192" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="240" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Lf1-1k-QiM"/>
                                             <constraint firstAttribute="width" constant="48" id="ZnW-t5-0DF"/>
@@ -400,20 +414,6 @@
                                             <action selector="switch2🌧:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jOd-6z-2Vy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="-5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BL-oI-UCJ">
-                                        <rect key="frame" x="0.0" y="240" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="9Yx-xG-OHA"/>
-                                            <constraint firstAttribute="height" constant="48" id="bdt-i5-LVo"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="阳光普照奖"/>
-                                        <state key="selected" backgroundImage="阳光普照奖 选中"/>
-                                        <connections>
-                                            <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sr9-Fe-8hz"/>
-                                            <action selector="switch2🎖:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fgc-Qu-YVt"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" tag="-6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDa-SH-lLb">
                                         <rect key="frame" x="0.0" y="288" width="48" height="48"/>
                                         <constraints>
@@ -424,25 +424,25 @@
                                         <state key="normal" backgroundImage="作弊"/>
                                         <state key="selected" backgroundImage="作弊 选中"/>
                                         <connections>
-                                            <action selector="cheatingSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZm-il-BNz"/>
+                                            <action selector="cheatingAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OZm-il-BNz"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="lDa-SH-lLb" firstAttribute="top" secondItem="1BL-oI-UCJ" secondAttribute="bottom" id="83J-WN-vQZ"/>
+                                    <constraint firstItem="lDa-SH-lLb" firstAttribute="top" secondItem="jGV-hn-99h" secondAttribute="bottom" id="83J-WN-vQZ"/>
                                     <constraint firstItem="OVz-Sk-LLK" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="El9-BQ-3Dr"/>
                                     <constraint firstAttribute="trailing" secondItem="1L2-bn-oLd" secondAttribute="trailing" id="GXS-E1-Vpy"/>
                                     <constraint firstAttribute="trailing" secondItem="lDa-SH-lLb" secondAttribute="trailing" id="KFb-tI-Yfg"/>
                                     <constraint firstItem="CTy-mD-poR" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="QQb-Cq-FwU"/>
                                     <constraint firstItem="2tV-6v-KfT" firstAttribute="top" secondItem="OVz-Sk-LLK" secondAttribute="bottom" id="TeQ-u9-Dfy"/>
                                     <constraint firstItem="1L2-bn-oLd" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="XRu-BL-CaB"/>
-                                    <constraint firstItem="1BL-oI-UCJ" firstAttribute="top" secondItem="jGV-hn-99h" secondAttribute="bottom" id="ZbL-Oi-RdR"/>
+                                    <constraint firstItem="1BL-oI-UCJ" firstAttribute="top" secondItem="CTy-mD-poR" secondAttribute="bottom" id="ZbL-Oi-RdR"/>
                                     <constraint firstItem="OVz-Sk-LLK" firstAttribute="top" secondItem="And-gR-8Be" secondAttribute="top" id="ZbV-TD-oh9"/>
                                     <constraint firstItem="CTy-mD-poR" firstAttribute="top" secondItem="1L2-bn-oLd" secondAttribute="bottom" id="bEs-x8-cUX"/>
                                     <constraint firstItem="lDa-SH-lLb" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="bcI-47-gW3"/>
                                     <constraint firstAttribute="height" constant="336" id="bnQ-uF-ph4"/>
-                                    <constraint firstItem="jGV-hn-99h" firstAttribute="top" secondItem="CTy-mD-poR" secondAttribute="bottom" id="bz7-7j-ud7"/>
+                                    <constraint firstItem="jGV-hn-99h" firstAttribute="top" secondItem="1BL-oI-UCJ" secondAttribute="bottom" id="bz7-7j-ud7"/>
                                     <constraint firstAttribute="trailing" secondItem="2tV-6v-KfT" secondAttribute="trailing" id="dxJ-cx-0eD"/>
                                     <constraint firstItem="jGV-hn-99h" firstAttribute="leading" secondItem="And-gR-8Be" secondAttribute="leading" id="eyd-aA-Hfo"/>
                                     <constraint firstAttribute="trailing" secondItem="OVz-Sk-LLK" secondAttribute="trailing" id="mqY-os-32m"/>
@@ -461,6 +461,16 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
+                                <rect key="frame" x="236" y="134" width="640" height="360"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="开始抽奖"/>
+                                <connections>
+                                    <action selector="sunshineBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gAz-pq-SPh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -479,6 +489,7 @@
                             <constraint firstItem="n8R-37-VkS" firstAttribute="top" secondItem="Wsj-01-WIm" secondAttribute="top" constant="30" id="W04-kq-P6L"/>
                             <constraint firstItem="x2j-k1-72w" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Wlg-VO-ic2"/>
                             <constraint firstAttribute="bottom" secondItem="Qth-UI-dam" secondAttribute="bottom" id="YWB-RQ-eEs"/>
+                            <constraint firstItem="4bv-xU-5fT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="gIv-B6-mNL"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
                             <constraint firstItem="NRx-uF-1jy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="hvE-Hx-Nr7"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="trailing" secondItem="n8R-37-VkS" secondAttribute="trailing" constant="19" id="ifm-zD-PZ8"/>
@@ -486,6 +497,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72g-8E-A7l" secondAttribute="trailing" id="l4s-oz-h06"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IpB-KT-ypC" secondAttribute="trailing" id="oV3-oo-Xrq"/>
                             <constraint firstItem="72g-8E-A7l" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p2W-a3-Mro"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4bv-xU-5fT" secondAttribute="trailing" constant="24" id="qN4-iK-RFA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IpB-KT-ypC" secondAttribute="bottom" id="rsd-tl-Yza"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="72g-8E-A7l" secondAttribute="bottom" id="yNN-sE-0He"/>
                             <constraint firstItem="azB-WO-oBO" firstAttribute="centerY" secondItem="n8R-37-VkS" secondAttribute="centerY" id="yUB-vU-4rc"/>
@@ -494,13 +506,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="kGg-eQ-xh4"/>
                     <connections>
-                        <outlet property="LeftBtnFive" destination="jGV-hn-99h" id="zgZ-or-HYY"/>
+                        <outlet property="LeftBtnFive" destination="1BL-oI-UCJ" id="DOJ-UT-S5x"/>
                         <outlet property="LeftBtnFour" destination="CTy-mD-poR" id="Lee-Nk-izd"/>
                         <outlet property="LeftBtnOne" destination="OVz-Sk-LLK" id="9zp-Wy-9qL"/>
                         <outlet property="LeftBtnSeven" destination="lDa-SH-lLb" id="5lm-h5-XjG"/>
-                        <outlet property="LeftBtnSix" destination="1BL-oI-UCJ" id="DOJ-UT-S5x"/>
+                        <outlet property="LeftBtnSix" destination="jGV-hn-99h" id="zgZ-or-HYY"/>
                         <outlet property="LeftBtnThird" destination="1L2-bn-oLd" id="OyS-B3-EZ5"/>
                         <outlet property="LeftBtnTwo" destination="2tV-6v-KfT" id="0WB-0K-n1Q"/>
+                        <outlet property="LeftBtnsView" destination="And-gR-8Be" id="dyb-M0-Cgy"/>
                         <outlet property="RightBtnFive" destination="8Ny-9i-Kyd" id="VzD-TR-AwL"/>
                         <outlet property="RightBtnFour" destination="dXt-gt-rB9" id="vrS-PX-V0Z"/>
                         <outlet property="RightBtnOne" destination="VkH-24-fio" id="imv-i8-k8X"/>
@@ -514,11 +527,12 @@
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
+                        <outlet property="sunshineBtn" destination="Drs-n2-PRz" id="EVq-oA-X0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.24460431654677" y="-500.17985611510795"/>
+            <point key="canvasLocation" x="-494.24460431654677" y="-500.7194244604317"/>
         </scene>
         <!--抽奖列表-->
         <scene sceneID="rqS-VT-dPg">
@@ -887,6 +901,7 @@
         <image name="作弊" width="48" height="48"/>
         <image name="作弊 选中" width="48" height="48"/>
         <image name="刷新" width="72" height="72"/>
+        <image name="名单设置" width="100" height="40"/>
         <image name="奖品栏" width="1024" height="186"/>
         <image name="彩色" width="48" height="48"/>
         <image name="彩色 大" width="48" height="48"/>

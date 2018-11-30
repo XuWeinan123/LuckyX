@@ -98,6 +98,7 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
         }
         //保存默认值
         UserDefaults.standard.set(textViewInput.text, forKey: "UserDefaultEditPerson")
+        self.navigationController?.viewControllers[0]
         self.navigationController?.popToRootViewController(animated: true)
     }
     func visitPersons(){
