@@ -464,13 +464,21 @@
                             <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Drs-n2-PRz">
                                 <rect key="frame" x="236" y="134" width="640" height="360"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="开始抽奖"/>
                                 <connections>
                                     <action selector="sunshineBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gAz-pq-SPh"/>
                                 </connections>
                             </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="抽奖规则" translatesAutoresizingMaskIntoConstraints="NO" id="RUM-4D-cCG">
+                                <rect key="frame" x="310" y="258" width="493" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -527,6 +535,7 @@
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
+                        <outlet property="rules" destination="RUM-4D-cCG" id="8sy-aD-OdB"/>
                         <outlet property="sunshineBtn" destination="Drs-n2-PRz" id="EVq-oA-X0x"/>
                     </connections>
                 </viewController>
