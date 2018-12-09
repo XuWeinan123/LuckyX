@@ -17,7 +17,6 @@
 		E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7621A0F0450011779E /* AppDelegate.swift */; };
 		E14A0F7921A0F0450011779E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14A0F7821A0F0450011779E /* ViewController.swift */; };
 		E14A0F7C21A0F0450011779E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7A21A0F0450011779E /* Main.storyboard */; };
-		E14A0F7E21A0F0470011779E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7D21A0F0470011779E /* Assets.xcassets */; };
 		E14A0F8121A0F0470011779E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14A0F7F21A0F0470011779E /* LaunchScreen.storyboard */; };
 		E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */; };
 		E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD5A5221A1475E00413E39 /* ImageHelper.swift */; };
@@ -26,6 +25,13 @@
 		E1C36FD121A5B9DB0019DEFC /* LeftPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */; };
 		E1C36FD221A5B9DB0019DEFC /* RightPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */; };
 		E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */; };
+		E1F7BEF721BC175100E18587 /* LotteryModeSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BEF621BC175100E18587 /* LotteryModeSettingVC.swift */; };
+		E1F7BEF921BCAB7100E18587 /* LotteryModeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BEF821BCAB7100E18587 /* LotteryModeSettingCell.swift */; };
+		E1F7BEFB21BCDAE900E18587 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F7BEFA21BCDAE700E18587 /* Assets.xcassets */; };
+		E1F7BEFD21BCDBE200E18587 /* LotteryModeAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BEFC21BCDBE200E18587 /* LotteryModeAddVC.swift */; };
+		E1F7BEFF21BCDC5800E18587 /* LotteryModeAddIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BEFE21BCDC5800E18587 /* LotteryModeAddIconCell.swift */; };
+		E1F7BF0121BCDCDA00E18587 /* LotteryModeAddRuleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BF0021BCDCDA00E18587 /* LotteryModeAddRuleCell.swift */; };
+		E1F7BF0321BCEFFE00E18587 /* PrizeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F7BF0221BCEFFE00E18587 /* PrizeSettingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +49,6 @@
 		E14A0F7621A0F0450011779E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14A0F7821A0F0450011779E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E14A0F7B21A0F0450011779E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E14A0F7D21A0F0470011779E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E14A0F8021A0F0470011779E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E14A0F8221A0F0470011779E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
@@ -53,6 +58,13 @@
 		E1C36FCE21A5B9DA0019DEFC /* LeftPersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftPersonCell.swift; sourceTree = "<group>"; };
 		E1C36FCF21A5B9DB0019DEFC /* RightPersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPersonCell.swift; sourceTree = "<group>"; };
 		E1C36FD021A5B9DB0019DEFC /* PersonListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonListVC.swift; sourceTree = "<group>"; };
+		E1F7BEF621BC175100E18587 /* LotteryModeSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModeSettingVC.swift; sourceTree = "<group>"; };
+		E1F7BEF821BCAB7100E18587 /* LotteryModeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModeSettingCell.swift; sourceTree = "<group>"; };
+		E1F7BEFA21BCDAE700E18587 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1F7BEFC21BCDBE200E18587 /* LotteryModeAddVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModeAddVC.swift; sourceTree = "<group>"; };
+		E1F7BEFE21BCDC5800E18587 /* LotteryModeAddIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModeAddIconCell.swift; sourceTree = "<group>"; };
+		E1F7BF0021BCDCDA00E18587 /* LotteryModeAddRuleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryModeAddRuleCell.swift; sourceTree = "<group>"; };
+		E1F7BF0221BCEFFE00E18587 /* PrizeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeSettingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +119,6 @@
 				E14A0F7621A0F0450011779E /* AppDelegate.swift */,
 				E14A0F7821A0F0450011779E /* ViewController.swift */,
 				E14A0F7A21A0F0450011779E /* Main.storyboard */,
-				E14A0F7D21A0F0470011779E /* Assets.xcassets */,
 				E14A0F7F21A0F0470011779E /* LaunchScreen.storyboard */,
 				E14A0F8221A0F0470011779E /* Info.plist */,
 				E1AD5A5021A1474900413E39 /* ImageViewExtension.swift */,
@@ -116,7 +127,14 @@
 				E1AD5A5621A1575A00413E39 /* PersonCell.swift */,
 				3DF28D5C21ACD58F00BAEC0F /* EditPersonCell.swift */,
 				3DF28D6121AD176D00BAEC0F /* textFile.m */,
+				E1F7BEFA21BCDAE700E18587 /* Assets.xcassets */,
 				3DF28D6021AD176C00BAEC0F /* LuckyX-Bridging-Header.h */,
+				E1F7BEF621BC175100E18587 /* LotteryModeSettingVC.swift */,
+				E1F7BEF821BCAB7100E18587 /* LotteryModeSettingCell.swift */,
+				E1F7BEFC21BCDBE200E18587 /* LotteryModeAddVC.swift */,
+				E1F7BEFE21BCDC5800E18587 /* LotteryModeAddIconCell.swift */,
+				E1F7BF0021BCDCDA00E18587 /* LotteryModeAddRuleCell.swift */,
+				E1F7BF0221BCEFFE00E18587 /* PrizeSettingCell.swift */,
 			);
 			path = LuckyX;
 			sourceTree = "<group>";
@@ -193,8 +211,8 @@
 				3DA612B921B0CF6600DF0F9C /* 卡通人物狂欢撒钱.mp4 in Resources */,
 				3DC9441A21AD70800044C92D /* 抽颜色方阵动画.mp4 in Resources */,
 				E14A0F8121A0F0470011779E /* LaunchScreen.storyboard in Resources */,
-				E14A0F7E21A0F0470011779E /* Assets.xcassets in Resources */,
 				E14A0F7C21A0F0450011779E /* Main.storyboard in Resources */,
+				E1F7BEFB21BCDAE900E18587 /* Assets.xcassets in Resources */,
 				3DC9441721AD65DF0044C92D /* PickColorAnimationData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,15 +272,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AD5A5721A1575A00413E39 /* PersonCell.swift in Sources */,
+				E1F7BF0121BCDCDA00E18587 /* LotteryModeAddRuleCell.swift in Sources */,
+				E1F7BEFF21BCDC5800E18587 /* LotteryModeAddIconCell.swift in Sources */,
+				E1F7BF0321BCEFFE00E18587 /* PrizeSettingCell.swift in Sources */,
 				3DF28D5B21ABF2FC00BAEC0F /* EditPersonVC.swift in Sources */,
 				E1C36FD121A5B9DB0019DEFC /* LeftPersonCell.swift in Sources */,
+				E1F7BEF921BCAB7100E18587 /* LotteryModeSettingCell.swift in Sources */,
 				E1AD5A5521A1487600413E39 /* PrizeCell.swift in Sources */,
+				E1F7BEF721BC175100E18587 /* LotteryModeSettingVC.swift in Sources */,
 				E1C36FD321A5B9DB0019DEFC /* PersonListVC.swift in Sources */,
 				E14A0F7921A0F0450011779E /* ViewController.swift in Sources */,
 				E1AD5A5121A1474900413E39 /* ImageViewExtension.swift in Sources */,
 				3DF28D6221AD176D00BAEC0F /* textFile.m in Sources */,
 				E1C36FD221A5B9DB0019DEFC /* RightPersonCell.swift in Sources */,
 				3DF28D5D21ACD58F00BAEC0F /* EditPersonCell.swift in Sources */,
+				E1F7BEFD21BCDBE200E18587 /* LotteryModeAddVC.swift in Sources */,
 				E14A0F7721A0F0450011779E /* AppDelegate.swift in Sources */,
 				E1AD5A5321A1475E00413E39 /* ImageHelper.swift in Sources */,
 			);

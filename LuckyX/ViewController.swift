@@ -114,6 +114,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                     let cancel = UIAlertAction.init(title: "好的", style: UIAlertAction.Style.cancel) { (action:UIAlertAction) ->() in
                         print("处理完成\(action)")
                     }
+                    UIAlertAction.Style.cancel
+                    UIAlertAction.Style.default
+                    UIAlertAction.Style.destructive
                     alertController.addAction(cancel);
                     self.present(alertController, animated: true, completion: nil)
                     return
@@ -173,6 +176,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
     }
     
+    @IBAction func lotteryModeSettingAction(_ sender: UIButton) {
+        self.navigationController?.pushViewController((self.storyboard?.instantiateViewController(withIdentifier: "LotteryModeSetting"))!, animated: true);
+    }
     @IBAction func sunshineBtnAction(_ sender: UIButton) {
         //类似砸蛋，不过一次性出11个
         print(personForNow.count)
@@ -208,6 +214,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         switch2🥉(LeftBtnOne)
         sideBtnsSelect(LeftBtnOne)
         self.navigationController?.navigationBar.isHidden = true
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
     }
     override func viewDidLoad() {
         super.viewDidLoad()

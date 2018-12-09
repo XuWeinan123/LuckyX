@@ -26,6 +26,549 @@
             </objects>
             <point key="canvasLocation" x="-1181" y="-500"/>
         </scene>
+        <!--Lottery Mode AddVC-->
+        <scene sceneID="ofd-Bo-ArL">
+            <objects>
+                <viewController storyboardIdentifier="LotteryModeAdd" id="QmW-N9-R4E" customClass="LotteryModeAddVC" customModule="LuckyX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gf6-Yo-C5t">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抽奖模式图标" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yC-nq-rps">
+                                <rect key="frame" x="30" y="50" width="86" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZWh-E1-J5O">
+                                <rect key="frame" x="30" y="87" width="1052" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="R0P-ve-jjt"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="25" minimumInteritemSpacing="25" id="lEJ-rX-Vzx">
+                                    <size key="itemSize" width="64" height="64"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="iconCell" id="J8L-fk-liS" customClass="LotteryModeAddIconCell" customModule="LuckyX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="抽奖模式小图背景" translatesAutoresizingMaskIntoConstraints="NO" id="dtP-kn-1Ze">
+                                                    <rect key="frame" x="-4" y="-4" width="72" height="72"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="72" id="CQY-yt-Sae"/>
+                                                        <constraint firstAttribute="width" constant="72" id="ZZ9-Ym-MHZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lsz-o5-wsU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lsz-o5-wsU" secondAttribute="bottom" id="3XJ-es-46A"/>
+                                            <constraint firstItem="lsz-o5-wsU" firstAttribute="leading" secondItem="J8L-fk-liS" secondAttribute="leading" id="cXl-rg-iSz"/>
+                                            <constraint firstItem="dtP-kn-1Ze" firstAttribute="centerY" secondItem="J8L-fk-liS" secondAttribute="centerY" id="eJr-oT-05B"/>
+                                            <constraint firstItem="dtP-kn-1Ze" firstAttribute="centerX" secondItem="J8L-fk-liS" secondAttribute="centerX" id="iyg-Cd-2Ie"/>
+                                            <constraint firstAttribute="trailing" secondItem="lsz-o5-wsU" secondAttribute="trailing" id="t9k-RG-Pdi"/>
+                                            <constraint firstItem="lsz-o5-wsU" firstAttribute="top" secondItem="J8L-fk-liS" secondAttribute="top" id="ycY-Gk-qd5"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="icon" destination="lsz-o5-wsU" id="uI1-pD-QYO"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抽奖模式名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHz-Lo-eVU">
+                                <rect key="frame" x="30" y="181" width="86" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="输入模式名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRc-ht-diu">
+                                <rect key="frame" x="30" y="218" width="556" height="22"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抽奖规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1S3-76-yIn">
+                                <rect key="frame" x="30" y="260" width="58" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fxd-tF-zsX">
+                                <rect key="frame" x="30" y="297" width="1052" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="iSv-FN-cxj"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Aqt-gr-G5O">
+                                    <size key="itemSize" width="167" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RuleCell" id="86s-hm-QM2" customClass="LotteryModeAddRuleCell" customModule="LuckyX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="抽奖规则选择背景" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-Rs-WaR">
+                                                    <rect key="frame" x="-4" y="-4" width="175" height="108"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="175" id="MV2-rw-rGE"/>
+                                                        <constraint firstAttribute="height" constant="108" id="qVf-ic-4rZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9s-oX-r1k">
+                                                    <rect key="frame" x="10" y="37.5" width="147" height="25"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="常规随机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySq-eK-tu5">
+                                                            <rect key="frame" x="26" y="1.5" width="74" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="详情" translatesAutoresizingMaskIntoConstraints="NO" id="jzY-gl-1OP">
+                                                            <rect key="frame" x="104" y="3.5" width="18" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="18" id="PFO-3F-UXz"/>
+                                                                <constraint firstAttribute="height" constant="18" id="Uct-En-Ga8"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="jzY-gl-1OP" firstAttribute="leading" secondItem="ySq-eK-tu5" secondAttribute="trailing" constant="4" id="6y5-im-OIx"/>
+                                                        <constraint firstItem="jzY-gl-1OP" firstAttribute="centerY" secondItem="ySq-eK-tu5" secondAttribute="centerY" id="CVO-3v-QfQ"/>
+                                                        <constraint firstAttribute="height" constant="25" id="Owd-iy-cqa"/>
+                                                        <constraint firstItem="ySq-eK-tu5" firstAttribute="leading" secondItem="i9s-oX-r1k" secondAttribute="leading" constant="26" id="bWV-RN-THn"/>
+                                                        <constraint firstItem="ySq-eK-tu5" firstAttribute="centerY" secondItem="i9s-oX-r1k" secondAttribute="centerY" id="xXq-eX-P7J"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="E6n-Rs-WaR" firstAttribute="top" secondItem="86s-hm-QM2" secondAttribute="top" constant="-4" id="0Sd-DM-DHU"/>
+                                            <constraint firstItem="i9s-oX-r1k" firstAttribute="leading" secondItem="86s-hm-QM2" secondAttribute="leading" constant="10" id="LwQ-NT-hEE"/>
+                                            <constraint firstItem="i9s-oX-r1k" firstAttribute="centerY" secondItem="E6n-Rs-WaR" secondAttribute="centerY" id="LzP-hU-bAW"/>
+                                            <constraint firstItem="i9s-oX-r1k" firstAttribute="centerX" secondItem="86s-hm-QM2" secondAttribute="centerX" id="SKB-rR-gxp"/>
+                                            <constraint firstAttribute="trailing" secondItem="i9s-oX-r1k" secondAttribute="trailing" constant="10" id="r4f-sW-gA2"/>
+                                            <constraint firstItem="E6n-Rs-WaR" firstAttribute="centerX" secondItem="86s-hm-QM2" secondAttribute="centerX" id="z5T-eh-bkD"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="ruleBackgroud" destination="E6n-Rs-WaR" id="EEg-Nt-Iw0"/>
+                                            <outlet property="ruleName" destination="ySq-eK-tu5" id="OCX-F2-JLI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="移除中奖人员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1m-0v-sB0">
+                                <rect key="frame" x="70" y="427" width="170.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从未中奖人员中抽取" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xH5-XM-zxD">
+                                <rect key="frame" x="70" y="468.5" width="255.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNT-Lw-bNv">
+                                <rect key="frame" x="30" y="430" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="Bir-5a-A9q"/>
+                                    <constraint firstAttribute="height" constant="28" id="s60-F0-Ucc"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="unselect"/>
+                                <state key="selected" backgroundImage="select"/>
+                                <connections>
+                                    <action selector="isRemoveWinnerAction:" destination="QmW-N9-R4E" eventType="touchUpInside" id="nqQ-b2-ZuQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgc-yM-Ur9">
+                                <rect key="frame" x="30" y="471.5" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="6zz-rF-5iY"/>
+                                    <constraint firstAttribute="width" constant="28" id="qa5-8M-8L7"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="unselect"/>
+                                <state key="selected" backgroundImage="select"/>
+                                <connections>
+                                    <action selector="isLotteryFromNonwinners:" destination="QmW-N9-R4E" eventType="touchUpInside" id="Y2W-tV-vnJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖品设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNd-Z5-9R2">
+                                <rect key="frame" x="30" y="522" width="58" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fiF-HQ-ZBc">
+                                <rect key="frame" x="0.0" y="559" width="1112" height="174"/>
+                                <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="174" id="Q2a-pV-txt"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Gde-85-i0Y">
+                                    <size key="itemSize" width="174" height="174"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PrizeSettingCell" id="gJL-Wi-3ZI" customClass="PrizeSettingCell" customModule="LuckyX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="174"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="174"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pfx-Cg-gEJ">
+                                                    <rect key="frame" x="37" y="20" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="0ca-fq-lMc"/>
+                                                        <constraint firstAttribute="width" constant="100" id="c1H-H1-TO6"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖品 × 数量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkN-bt-pEp">
+                                                    <rect key="frame" x="8" y="137" width="158" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="HkN-bt-pEp" firstAttribute="centerX" secondItem="gJL-Wi-3ZI" secondAttribute="centerX" id="0Fi-Iv-lyn"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="HkN-bt-pEp" secondAttribute="bottom" constant="12" id="G7b-Kf-7R7"/>
+                                            <constraint firstItem="HkN-bt-pEp" firstAttribute="leading" secondItem="gJL-Wi-3ZI" secondAttribute="leadingMargin" id="ON5-S9-XRk"/>
+                                            <constraint firstItem="Pfx-Cg-gEJ" firstAttribute="top" secondItem="gJL-Wi-3ZI" secondAttribute="top" constant="20" id="f8U-1Q-m1j"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="HkN-bt-pEp" secondAttribute="trailing" id="hJW-Gg-KB2"/>
+                                            <constraint firstItem="Pfx-Cg-gEJ" firstAttribute="centerX" secondItem="gJL-Wi-3ZI" secondAttribute="centerX" id="p1Q-dA-dc7"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="nameAndNumber" destination="HkN-bt-pEp" id="aHx-qI-t0Q"/>
+                                            <outlet property="prizeImageView" destination="Pfx-Cg-gEJ" id="L59-8C-rQ5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UeE-QF-6Gk" firstAttribute="trailing" secondItem="Fxd-tF-zsX" secondAttribute="trailing" constant="30" id="5WG-lx-oOa"/>
+                            <constraint firstItem="Jgc-yM-Ur9" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="6Cc-gt-v32"/>
+                            <constraint firstItem="XNT-Lw-bNv" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="APi-zf-ZiB"/>
+                            <constraint firstItem="KHz-Lo-eVU" firstAttribute="top" secondItem="ZWh-E1-J5O" secondAttribute="bottom" constant="30" id="Asl-zG-hZZ"/>
+                            <constraint firstItem="KNd-Z5-9R2" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="Gx0-Ty-era"/>
+                            <constraint firstItem="xH5-XM-zxD" firstAttribute="top" secondItem="g1m-0v-sB0" secondAttribute="bottom" constant="8" id="HX9-8D-uzo"/>
+                            <constraint firstItem="fiF-HQ-ZBc" firstAttribute="top" secondItem="KNd-Z5-9R2" secondAttribute="bottom" constant="20" id="HaJ-Be-tLO"/>
+                            <constraint firstItem="8yC-nq-rps" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="NmB-VN-JFx"/>
+                            <constraint firstItem="fiF-HQ-ZBc" firstAttribute="trailing" secondItem="UeE-QF-6Gk" secondAttribute="trailing" id="OIH-pZ-lhH"/>
+                            <constraint firstItem="fiF-HQ-ZBc" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" id="OZC-8i-n7C"/>
+                            <constraint firstItem="8yC-nq-rps" firstAttribute="top" secondItem="UeE-QF-6Gk" secondAttribute="top" constant="30" id="SAw-9G-8sC"/>
+                            <constraint firstItem="ZWh-E1-J5O" firstAttribute="top" secondItem="8yC-nq-rps" secondAttribute="bottom" constant="20" id="Thi-1g-6Aw"/>
+                            <constraint firstItem="YRc-ht-diu" firstAttribute="width" secondItem="gf6-Yo-C5t" secondAttribute="width" multiplier="1:2" id="US2-Qv-UD2"/>
+                            <constraint firstItem="1S3-76-yIn" firstAttribute="top" secondItem="YRc-ht-diu" secondAttribute="bottom" constant="20" id="Ue9-Ls-JgW"/>
+                            <constraint firstItem="KNd-Z5-9R2" firstAttribute="top" secondItem="xH5-XM-zxD" secondAttribute="bottom" constant="20" id="WRM-0W-yeR"/>
+                            <constraint firstItem="ZWh-E1-J5O" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="X59-1q-I4F"/>
+                            <constraint firstItem="Jgc-yM-Ur9" firstAttribute="centerY" secondItem="xH5-XM-zxD" secondAttribute="centerY" id="XU8-2Y-mMY"/>
+                            <constraint firstItem="Fxd-tF-zsX" firstAttribute="top" secondItem="1S3-76-yIn" secondAttribute="bottom" constant="20" id="af5-5h-CNj"/>
+                            <constraint firstItem="Fxd-tF-zsX" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="eHt-74-fDz"/>
+                            <constraint firstItem="KHz-Lo-eVU" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="htM-tY-aOc"/>
+                            <constraint firstItem="XNT-Lw-bNv" firstAttribute="centerY" secondItem="g1m-0v-sB0" secondAttribute="centerY" id="ieP-Jm-spP"/>
+                            <constraint firstItem="xH5-XM-zxD" firstAttribute="leading" secondItem="g1m-0v-sB0" secondAttribute="leading" id="lyn-gH-yVS"/>
+                            <constraint firstItem="UeE-QF-6Gk" firstAttribute="trailing" secondItem="ZWh-E1-J5O" secondAttribute="trailing" constant="30" id="q1B-6d-Y9A"/>
+                            <constraint firstItem="g1m-0v-sB0" firstAttribute="leading" secondItem="Fxd-tF-zsX" secondAttribute="leading" constant="40" id="qiw-go-PZS"/>
+                            <constraint firstItem="1S3-76-yIn" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="rIw-p6-m3q"/>
+                            <constraint firstItem="g1m-0v-sB0" firstAttribute="top" secondItem="Fxd-tF-zsX" secondAttribute="bottom" constant="-20" id="tL3-z9-bnp"/>
+                            <constraint firstItem="YRc-ht-diu" firstAttribute="leading" secondItem="UeE-QF-6Gk" secondAttribute="leading" constant="30" id="uDi-e2-Mrt"/>
+                            <constraint firstItem="YRc-ht-diu" firstAttribute="top" secondItem="KHz-Lo-eVU" secondAttribute="bottom" constant="20" id="wvn-gf-tO4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UeE-QF-6Gk"/>
+                    </view>
+                    <connections>
+                        <outlet property="isLotteryFromNonwinnerBtn" destination="Jgc-yM-Ur9" id="yw5-Ma-MIg"/>
+                        <outlet property="isRemoveWinnerBtn" destination="XNT-Lw-bNv" id="w1E-or-XTK"/>
+                        <outlet property="lotteryModeIconCollectionView" destination="ZWh-E1-J5O" id="mtD-Sb-mR5"/>
+                        <outlet property="lotteryModeName" destination="YRc-ht-diu" id="oLZ-cC-Flq"/>
+                        <outlet property="lotteryModeRuleCollectionView" destination="Fxd-tF-zsX" id="SLL-ad-oUF"/>
+                        <outlet property="prizeSettingCollectionView" destination="fiF-HQ-ZBc" id="I5g-Wz-TJ3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UW5-WC-atG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494.24460431654677" y="-1837.4100719424462"/>
+        </scene>
+        <!--Lottery Mode SettingVC-->
+        <scene sceneID="oh8-j4-xVR">
+            <objects>
+                <viewController storyboardIdentifier="LotteryModeSetting" id="UsB-qm-zOM" customClass="LotteryModeSettingVC" customModule="LuckyX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uC6-SP-XZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Ey-Cu-s9H">
+                                <rect key="frame" x="0.0" y="20" width="1112" height="814"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="25" id="ZCG-CO-AkM">
+                                    <size key="itemSize" width="334" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="3aj-Kh-1ee" customClass="LotteryModeSettingCell" customModule="LuckyX" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="抽奖模式设置bg" translatesAutoresizingMaskIntoConstraints="NO" id="vqn-CE-6e2">
+                                                    <rect key="frame" x="-8" y="-8" width="350" height="216"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="350" id="0ce-ae-6mo"/>
+                                                        <constraint firstAttribute="height" constant="216" id="ZBV-dT-li2"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖品名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umw-h7-9Cc">
+                                                    <rect key="frame" x="164" y="20" width="73.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抽奖规则：抽奖规则1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOJ-87-ylT">
+                                                    <rect key="frame" x="164" y="45" width="135" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="移除中奖人员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4E-8q-dG1">
+                                                    <rect key="frame" x="184" y="66" width="86" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="从未中奖人员中抽取" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bO-Cx-WxK">
+                                                    <rect key="frame" x="184" y="83" width="129" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4V-UW-Ia3">
+                                                    <rect key="frame" x="164" y="67.5" width="14" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="14" id="Dz0-ml-dnr"/>
+                                                        <constraint firstAttribute="height" constant="14" id="QCJ-OX-pJY"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="unselect"/>
+                                                    <state key="selected" image="select"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNv-yU-Ug9">
+                                                    <rect key="frame" x="164" y="84.5" width="14" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="BGQ-74-CKl"/>
+                                                        <constraint firstAttribute="width" constant="14" id="xjO-uh-TeJ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="unselect"/>
+                                                    <state key="selected" image="select"/>
+                                                </button>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Kf-dH-dqG">
+                                                    <rect key="frame" x="164" y="108" width="146" height="26"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="146" id="DL9-w3-lJm"/>
+                                                        <constraint firstAttribute="height" constant="26" id="pLO-L4-rp7"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="GLn-QZ-MMt">
+                                                        <size key="itemSize" width="26" height="26"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="crO-gf-gK2">
+                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPPO" translatesAutoresizingMaskIntoConstraints="NO" id="ANP-QK-iaP">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="giI-aj-I6F">
+                                                            <rect key="frame" x="30" y="0.0" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPPO" translatesAutoresizingMaskIntoConstraints="NO" id="n2R-2W-afu">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7a7-iy-Gnx">
+                                                            <rect key="frame" x="60" y="0.0" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPPO" translatesAutoresizingMaskIntoConstraints="NO" id="LdT-HD-Qd4">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wus-Y8-W56">
+                                                            <rect key="frame" x="90" y="0.0" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPPO" translatesAutoresizingMaskIntoConstraints="NO" id="p8t-s0-fkd">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VgE-0a-frI">
+                                                            <rect key="frame" x="120" y="0.0" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="OPPO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddz-cg-aMy">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建于 2018年9月30日 20:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpS-Yu-PEg">
+                                                    <rect key="frame" x="24" y="167" width="188" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in iPad" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mJ-J5-CTB">
+                                                    <rect key="frame" x="267" y="167" width="43" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D8p-UL-B9q">
+                                                    <rect key="frame" x="24" y="24" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="9mF-LE-Nbh"/>
+                                                        <constraint firstAttribute="height" constant="120" id="uv2-3O-Nmd"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="2bO-Cx-WxK" firstAttribute="leading" secondItem="y4E-8q-dG1" secondAttribute="leading" id="0xa-9V-wVn"/>
+                                            <constraint firstItem="9Kf-dH-dqG" firstAttribute="top" secondItem="2bO-Cx-WxK" secondAttribute="bottom" constant="8" id="4AP-is-Qzq"/>
+                                            <constraint firstItem="WOJ-87-ylT" firstAttribute="top" secondItem="Umw-h7-9Cc" secondAttribute="bottom" constant="4" id="51W-Z4-NIw"/>
+                                            <constraint firstItem="jNv-yU-Ug9" firstAttribute="leading" secondItem="a4V-UW-Ia3" secondAttribute="leading" id="870-J1-lKf"/>
+                                            <constraint firstAttribute="bottom" secondItem="tpS-Yu-PEg" secondAttribute="bottom" constant="16" id="EI8-ol-tBy"/>
+                                            <constraint firstItem="2bO-Cx-WxK" firstAttribute="top" secondItem="y4E-8q-dG1" secondAttribute="bottom" id="ETQ-VS-Qqp"/>
+                                            <constraint firstItem="D8p-UL-B9q" firstAttribute="leading" secondItem="3aj-Kh-1ee" secondAttribute="leading" constant="24" id="IcJ-Iw-WUd"/>
+                                            <constraint firstItem="vqn-CE-6e2" firstAttribute="centerY" secondItem="3aj-Kh-1ee" secondAttribute="centerY" id="O1J-FK-SJL"/>
+                                            <constraint firstItem="y4E-8q-dG1" firstAttribute="leading" secondItem="WOJ-87-ylT" secondAttribute="leading" constant="20" id="O3B-jY-dZl"/>
+                                            <constraint firstItem="tpS-Yu-PEg" firstAttribute="leading" secondItem="3aj-Kh-1ee" secondAttribute="leading" constant="24" id="RmV-bE-BQd"/>
+                                            <constraint firstItem="Umw-h7-9Cc" firstAttribute="leading" secondItem="3aj-Kh-1ee" secondAttribute="leading" constant="164" id="TbH-0H-zK8"/>
+                                            <constraint firstItem="WOJ-87-ylT" firstAttribute="leading" secondItem="Umw-h7-9Cc" secondAttribute="leading" id="XQn-Mr-Knd"/>
+                                            <constraint firstItem="y4E-8q-dG1" firstAttribute="top" secondItem="WOJ-87-ylT" secondAttribute="bottom" constant="4" id="bh6-Y2-94e"/>
+                                            <constraint firstAttribute="bottom" secondItem="9mJ-J5-CTB" secondAttribute="bottom" constant="16" id="fbi-Lx-g05"/>
+                                            <constraint firstItem="a4V-UW-Ia3" firstAttribute="centerY" secondItem="y4E-8q-dG1" secondAttribute="centerY" id="gw4-bg-4Fn"/>
+                                            <constraint firstItem="vqn-CE-6e2" firstAttribute="centerX" secondItem="3aj-Kh-1ee" secondAttribute="centerX" id="mrR-nT-kgb"/>
+                                            <constraint firstAttribute="trailing" secondItem="9mJ-J5-CTB" secondAttribute="trailing" constant="24" id="ms8-GC-wcd"/>
+                                            <constraint firstItem="a4V-UW-Ia3" firstAttribute="leading" secondItem="WOJ-87-ylT" secondAttribute="leading" id="pfr-p8-0zj"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Kf-dH-dqG" secondAttribute="trailing" constant="24" id="qSc-07-Pt5"/>
+                                            <constraint firstItem="Umw-h7-9Cc" firstAttribute="top" secondItem="3aj-Kh-1ee" secondAttribute="top" constant="20" id="uhq-Ug-bQm"/>
+                                            <constraint firstItem="jNv-yU-Ug9" firstAttribute="centerY" secondItem="2bO-Cx-WxK" secondAttribute="centerY" id="wNE-V4-qVk"/>
+                                            <constraint firstItem="D8p-UL-B9q" firstAttribute="top" secondItem="3aj-Kh-1ee" secondAttribute="top" constant="24" id="zqF-b9-AVn"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="isLotteryFromNonwinners" destination="jNv-yU-Ug9" id="41i-1x-gqX"/>
+                                            <outlet property="isRemoveWinner" destination="a4V-UW-Ia3" id="Xmr-pu-oe1"/>
+                                            <outlet property="lotteryRuleLabel" destination="WOJ-87-ylT" id="aYJ-jC-vJH"/>
+                                            <outlet property="modeCreatedFromLabel" destination="9mJ-J5-CTB" id="PeV-TA-Jgc"/>
+                                            <outlet property="modeCreatedTimeLabel" destination="tpS-Yu-PEg" id="agT-WZ-yyk"/>
+                                            <outlet property="modeImageView" destination="D8p-UL-B9q" id="HAk-aF-yYr"/>
+                                            <outlet property="modeNameLabel" destination="Umw-h7-9Cc" id="syw-9s-5Xe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddCell" id="cg4-Bh-jW0" customClass="LotteryModeSettingCell" customModule="LuckyX" customModuleProvider="target">
+                                        <rect key="frame" x="389" y="0.0" width="334" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="添加新抽奖模式" translatesAutoresizingMaskIntoConstraints="NO" id="8h8-1N-Nce">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8h8-1N-Nce" secondAttribute="trailing" id="Aic-Gh-EkW"/>
+                                            <constraint firstAttribute="bottom" secondItem="8h8-1N-Nce" secondAttribute="bottom" id="MKc-oi-xjf"/>
+                                            <constraint firstItem="8h8-1N-Nce" firstAttribute="leading" secondItem="cg4-Bh-jW0" secondAttribute="leading" id="bEV-Vy-Qfe"/>
+                                            <constraint firstItem="8h8-1N-Nce" firstAttribute="top" secondItem="cg4-Bh-jW0" secondAttribute="top" id="vhc-pB-6UM"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Ey-Cu-s9H" firstAttribute="bottom" secondItem="uZi-Xs-3fN" secondAttribute="bottom" id="0FU-Bf-4Rs"/>
+                            <constraint firstItem="3Ey-Cu-s9H" firstAttribute="top" secondItem="uZi-Xs-3fN" secondAttribute="top" id="85l-wQ-9m6"/>
+                            <constraint firstItem="3Ey-Cu-s9H" firstAttribute="leading" secondItem="uZi-Xs-3fN" secondAttribute="leading" id="Gd7-gg-aKp"/>
+                            <constraint firstItem="uZi-Xs-3fN" firstAttribute="bottom" secondItem="3Ey-Cu-s9H" secondAttribute="bottom" id="Lu5-sY-khv"/>
+                            <constraint firstItem="3Ey-Cu-s9H" firstAttribute="top" secondItem="uZi-Xs-3fN" secondAttribute="top" id="VR0-aV-o5a"/>
+                            <constraint firstItem="3Ey-Cu-s9H" firstAttribute="trailing" secondItem="uZi-Xs-3fN" secondAttribute="trailing" id="ffG-az-zz5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uZi-Xs-3fN"/>
+                    </view>
+                    <connections>
+                        <outlet property="lotteryModeCollectionView" destination="3Ey-Cu-s9H" id="rkY-yR-Gsm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4pr-JH-vAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-494.24460431654677" y="-1158.2733812949641"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -479,6 +1022,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTJ-J9-Lny">
+                                <rect key="frame" x="14" y="94" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="抽奖模式设置"/>
+                                <connections>
+                                    <action selector="lotteryModeSettingAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xTi-gE-GeI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -900,7 +1452,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="OPPO" width="100" height="100"/>
         <image name="bg" width="1134" height="851"/>
+        <image name="select" width="14" height="14"/>
+        <image name="unselect" width="14" height="14"/>
         <image name="一等奖" width="48" height="48"/>
         <image name="一等奖 选中" width="48" height="48"/>
         <image name="三等奖" width="48" height="48"/>
@@ -914,6 +1469,10 @@
         <image name="奖品栏" width="1024" height="186"/>
         <image name="彩色" width="48" height="48"/>
         <image name="彩色 大" width="48" height="48"/>
+        <image name="抽奖模式小图背景" width="72" height="72"/>
+        <image name="抽奖模式设置bg" width="350" height="216"/>
+        <image name="抽奖规则选择背景" width="175" height="108"/>
+        <image name="添加新抽奖模式" width="334" height="200"/>
         <image name="特等奖" width="48" height="48"/>
         <image name="特等奖 选中" width="48" height="48"/>
         <image name="电视机" width="678" height="516"/>
@@ -927,6 +1486,7 @@
         <image name="绿色 大" width="48" height="48"/>
         <image name="蓝色" width="48" height="48"/>
         <image name="蓝色 大" width="48" height="48"/>
+        <image name="详情" width="18" height="18"/>
         <image name="选择按钮" width="174" height="174"/>
         <image name="金蛋" width="112" height="112"/>
         <image name="阳光普照奖" width="48" height="48"/>
