@@ -797,8 +797,8 @@
                                             <constraint firstAttribute="width" constant="48" id="MHf-Ja-uFW"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" backgroundImage="青色"/>
-                                        <state key="selected" backgroundImage="青色 大"/>
+                                        <state key="normal" backgroundImage="粉色"/>
+                                        <state key="selected" backgroundImage="粉色 大"/>
                                         <connections>
                                             <action selector="sideBtnsSelect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7C0-zr-GB0"/>
                                         </connections>
@@ -1082,7 +1082,7 @@
                         <outlet property="RightBtnThird" destination="mlG-oU-eFF" id="utg-fh-Cc4"/>
                         <outlet property="RightBtnTwo" destination="Zcg-8z-hkz" id="hX6-04-qup"/>
                         <outlet property="animPlaceHolderView" destination="n8R-37-VkS" id="0za-AX-JKA"/>
-                        <outlet property="collectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
+                        <outlet property="bottomPrizeCollectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
                         <outlet property="current🎁Mode" destination="x2j-k1-72w" id="gaJ-am-kly"/>
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
@@ -1476,6 +1476,8 @@
         <image name="特等奖" width="48" height="48"/>
         <image name="特等奖 选中" width="48" height="48"/>
         <image name="电视机" width="678" height="516"/>
+        <image name="粉色" width="48" height="48"/>
+        <image name="粉色 大" width="48" height="48"/>
         <image name="紫色" width="48" height="48"/>
         <image name="紫色 大" width="48" height="48"/>
         <image name="红包雨" width="48" height="48"/>
@@ -1491,8 +1493,6 @@
         <image name="金蛋" width="112" height="112"/>
         <image name="阳光普照奖" width="48" height="48"/>
         <image name="阳光普照奖 选中" width="48" height="48"/>
-        <image name="青色" width="48" height="48"/>
-        <image name="青色 大" width="48" height="48"/>
         <image name="黄色" width="48" height="48"/>
         <image name="黄色 大" width="48" height="48"/>
         <image name="🍳" width="200" height="200"/>

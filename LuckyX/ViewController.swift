@@ -27,7 +27,7 @@ class Prize: Object{
 }
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    var 🎁s:[PrizeInEgg] = []
+    var prizes:[PrizeInEgg] = []
     var personsInEgg:[PersonInEgg] = []
     var currentPrizeIndex = -1
     var winnersNumber = 1
@@ -38,7 +38,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     var playerItem = AVPlayerItem(url: URL(fileURLWithPath: Bundle.main.path(forResource: "抽颜色方阵动画", ofType: "mp4")!))
     /**用来保存暂存的抽奖用户名*/
     var personForNow:[Person] = []
-    var 🥉Colors = ["绿","红","黄","青","蓝","紫"]
+    var 🥉Colors = ["绿","红","黄","粉","蓝","紫"]
     @IBOutlet weak var getSomeLuckyBitchsBtn: UIButton!
     @IBOutlet weak var animPlaceHolderView: UIView!
     
@@ -65,16 +65,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet var RightBtnSix: UIButton!
     @IBOutlet var RightBtnSeven: UIButton!
     var rightBtns:[UIButton] = []
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
-            return 🎁s.count
+            return prizes.count
         }else{
             return personsInEgg.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 0{
-            if indexPath.row == 🎁s.count{
+            if indexPath.row == prizes.count{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PrizeCell
                 cell.textLabel.isHidden = true
                 cell.prizeImageView.isHidden = true
@@ -83,11 +84,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 return cell
             }else{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PrizeCell
-                cell.textLabel.text = "\(🎁s[indexPath.row].name)\(🎁s[indexPath.row].number == 1 ? "" : " × \(🎁s[indexPath.row].number)")"
+                cell.textLabel.text = "\(prizes[indexPath.row].name)\(prizes[indexPath.row].number == 1 ? "" : " × \(prizes[indexPath.row].number)")"
                    //
-                cell.prizeImageView.imageFromURL(🎁s[indexPath.row].imageUrl, placeholder: UIImage.init(named: "OPPO")!, fadeIn: true, shouldCacheImage: true) { (image) in
+                cell.prizeImageView.imageFromURL(prizes[indexPath.row].imageUrl, placeholder: UIImage.init(named: "OPPO")!, fadeIn: true, shouldCacheImage: true) { (image) in
                 }
-                cell.selectMask.isHidden = !🎁s[indexPath.row].isSelectd
+                cell.selectMask.isHidden = !prizes[indexPath.row].isSelectd
                 return cell
             }
             //cell.selectMask.isHidden = !prizes[indexPath.row].isSelectd
@@ -108,29 +109,26 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //奖品选择,选择前判断颜色是否选中
         if collectionView.tag == 0{
-            if indexPath.row != 🎁s.count{
+            if indexPath.row != prizes.count{
                 guard current🎨 != "无" else{
                     let alertController = UIAlertController.init(title: "无颜色", message: "给个面子，请先选择合适的颜色", preferredStyle:.alert)
                     let cancel = UIAlertAction.init(title: "好的", style: UIAlertAction.Style.cancel) { (action:UIAlertAction) ->() in
                         print("处理完成\(action)")
                     }
-                    UIAlertAction.Style.cancel
-                    UIAlertAction.Style.default
-                    UIAlertAction.Style.destructive
                     alertController.addAction(cancel);
                     self.present(alertController, animated: true, completion: nil)
                     return
                 }
                 rules.text = "抽奖规则"
                 rules.isHidden = true
-                for i in 0..<🎁s.count{
-                    🎁s[i].isSelectd = false
+                for i in 0..<prizes.count{
+                    prizes[i].isSelectd = false
                 }
-                🎁s[indexPath.row].isSelectd = true
+                prizes[indexPath.row].isSelectd = true
                 currentPrizeIndex = indexPath.row
-                current🎁 = 🎁s[currentPrizeIndex].name
+                current🎁 = prizes[currentPrizeIndex].name
                 collectionView.reloadData()
-                print("当前所选择的\(🎁s[currentPrizeIndex].name)")
+                print("当前所选择的\(prizes[currentPrizeIndex].name)")
                 //播放动画
                 player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
                 player.play()
@@ -144,8 +142,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                     self.sunshineBtn.alpha = 1
                 }, completion: nil)
             }else{
-                for i in 0..<(🎁s.count){
-                    🎁s[i].isSelectd = false
+                for i in 0..<(prizes.count){
+                    prizes[i].isSelectd = false
                 }
                 print("添加新奖品")
             }
@@ -208,7 +206,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
     }
     /**底部的奖品视图*/
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var bottomPrizeCollectionView: UICollectionView!
     @IBOutlet var personCollectionView: UICollectionView!
     override func viewWillAppear(_ animated: Bool) {
         switch2🥉(LeftBtnOne)
@@ -233,8 +231,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //self.view.layer.addSublayer(playerLayer)
         self.animPlaceHolderView.layer.addSublayer(playerLayer)
         //初始化奖品
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        bottomPrizeCollectionView.dataSource = self
+        bottomPrizeCollectionView.delegate = self
         personCollectionView.dataSource = self
         personCollectionView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
@@ -268,7 +266,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             case 3:
                 current🎨 = "黄"
             case 4:
-                current🎨 = "青"
+                current🎨 = "粉"
             case 5:
                 current🎨 = "蓝"
             case 6:
@@ -280,6 +278,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             }
         }
         sender!.isSelected = true
+        
+        //清空底部奖品选择
+        for i in 0..<prizes.count{
+            prizes[i].isSelectd = false
+        }
+        bottomPrizeCollectionView.reloadData()
     }
     @IBAction func switch2🥇(_ sender: UIButton){
         //把右侧按钮都enable
@@ -297,15 +301,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //清空鸡蛋区域
         personsInEgg.removeAll()
         personCollectionView.reloadData()
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "网易按摩椅", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc8ypn02qj30by0byn0e.jpg",order:11))
-        🎁s.append(PrizeInEgg(name: "PS4", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh1zo6mp8j30ci0cijs0.jpg",order:12))
-        🎁s.append(PrizeInEgg(name: "平衡车", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh20zbcbrj30by0by0t3.jpg",order:13))
-        🎁s.append(PrizeInEgg(name: "Switch", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxc93ga4m8j30by0byjty.jpg",order:14))
-        🎁s.append(PrizeInEgg(name: "家庭影院投影仪", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxh22pv8fmj308z08zgm7.jpg",order:15))
-        🎁s.append(PrizeInEgg(name: "R17", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc95vqz1ij30by0bywff.jpg",order:16))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "网易按摩椅", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc8ypn02qj30by0byn0e.jpg",order:11))
+        prizes.append(PrizeInEgg(name: "PS4", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh1zo6mp8j30ci0cijs0.jpg",order:12))
+        prizes.append(PrizeInEgg(name: "平衡车", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh20zbcbrj30by0by0t3.jpg",order:13))
+        prizes.append(PrizeInEgg(name: "Switch", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxc93ga4m8j30by0byjty.jpg",order:14))
+        prizes.append(PrizeInEgg(name: "家庭影院投影仪", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxh22pv8fmj308z08zgm7.jpg",order:15))
+        prizes.append(PrizeInEgg(name: "R17", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc95vqz1ij30by0bywff.jpg",order:16))
         winnersNumber = 1
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -326,15 +330,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //清空鸡蛋区域
         personsInEgg.removeAll()
         personCollectionView.reloadData()
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "700元购物卡", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr69t4kquj305k05kq3g.jpg", order: 21))
-        🎁s.append(PrizeInEgg(name: "IH电饭煲", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6intxvej305k05k3z3.jpg", order: 22))
-        🎁s.append(PrizeInEgg(name: "cherry键盘", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh39jiaa8j30by0byaaw.jpg", order: 23))
-        🎁s.append(PrizeInEgg(name: "ofree耳机", number: 2, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh39o5wzbj30u00u0wgi.jpg", order: 24))
-        🎁s.append(PrizeInEgg(name: "蓝牙音箱", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr6n67g88j305k05kmxk.jpg", order: 25))
-        🎁s.append(PrizeInEgg(name: "SKII套装", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6ovxsbwj305k05kt9c.jpg", order: 26))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "700元购物卡", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr69t4kquj305k05kq3g.jpg", order: 21))
+        prizes.append(PrizeInEgg(name: "IH电饭煲", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6intxvej305k05k3z3.jpg", order: 22))
+        prizes.append(PrizeInEgg(name: "cherry键盘", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh39jiaa8j30by0byaaw.jpg", order: 23))
+        prizes.append(PrizeInEgg(name: "ofree耳机", number: 2, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh39o5wzbj30u00u0wgi.jpg", order: 24))
+        prizes.append(PrizeInEgg(name: "蓝牙音箱", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr6n67g88j305k05kmxk.jpg", order: 25))
+        prizes.append(PrizeInEgg(name: "SKII套装", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6ovxsbwj305k05kt9c.jpg", order: 26))
         winnersNumber = 2
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil) //传入空值，清空选择
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -355,15 +359,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //清空鸡蛋区域
         personsInEgg.removeAll()
         personCollectionView.reloadData()
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "松下吹风机", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5fmz0fnj305k05k3z8.jpg", order: 31))
-        🎁s.append(PrizeInEgg(name: "雅诗兰黛", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5nv915qj305k05kq3i.jpg", order: 32))
-        🎁s.append(PrizeInEgg(name: "飞利浦电动牙刷", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5n7tdzwj305k05kmxl.jpg", order: 33))
-        🎁s.append(PrizeInEgg(name: "飞利浦剃须刀", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5q4zf32j305k05kdgh.jpg", order: 34))
-        🎁s.append(PrizeInEgg(name: "300元购物卡", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh3uek0qcj309q09q3yz.jpg", order: 35))
-        🎁s.append(PrizeInEgg(name: "行李箱", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5xl3odbj305k05k3yz.jpg", order: 36))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "松下吹风机", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5fmz0fnj305k05k3z8.jpg", order: 31))
+        prizes.append(PrizeInEgg(name: "雅诗兰黛", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5nv915qj305k05kq3i.jpg", order: 32))
+        prizes.append(PrizeInEgg(name: "飞利浦电动牙刷", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5n7tdzwj305k05kmxl.jpg", order: 33))
+        prizes.append(PrizeInEgg(name: "飞利浦剃须刀", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5q4zf32j305k05kdgh.jpg", order: 34))
+        prizes.append(PrizeInEgg(name: "300元购物卡", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh3uek0qcj309q09q3yz.jpg", order: 35))
+        prizes.append(PrizeInEgg(name: "行李箱", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5xl3odbj305k05k3yz.jpg", order: 36))
         winnersNumber = 3
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(RightBtnSeven)
         //调整动画时间戳x
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -384,10 +388,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //清空鸡蛋区域
         personsInEgg.removeAll()
         personCollectionView.reloadData()
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "Andy帮你实现心愿", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "Andy帮你实现心愿", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
         winnersNumber = 1
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil) //传入空值，清空选择
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -406,10 +410,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         current🎁 = "无奖品"
         sunshineBtn.alpha = 0
         
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "100元购物卡", number: 88, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh3waxw10j309q09qt9b.jpg", order: 41))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "100元购物卡", number: 88, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh3waxw10j309q09qt9b.jpg", order: 41))
         winnersNumber = 88
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(RightBtnSeven)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -432,19 +436,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         //清空鸡蛋区域
         personsInEgg.removeAll()
         personCollectionView.reloadData()
-        🎁s.removeAll()
-        🎁s.append(PrizeInEgg(name: "陈景远的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2oyhqqrj305k05kaa2.jpg", order: 51))
-        🎁s.append(PrizeInEgg(name: "卓世杰的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ov4zdwj305k05kt8p.jpg", order: 52))
-        🎁s.append(PrizeInEgg(name: "谢琴的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxp2opdlkej305k05kweh.jpg", order: 53))
-        🎁s.append(PrizeInEgg(name: "张广伟的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2okejv5j305k05kweh.jpg", order: 54))
-        🎁s.append(PrizeInEgg(name: "陈希的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ofcc13j305k05kq2x.jpg", order: 55))
-        🎁s.append(PrizeInEgg(name: "吴振宇的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2o91jndj305k05k0sq.jpg", order: 56))
-        🎁s.append(PrizeInEgg(name: "黄轶轩的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
-        🎁s.append(PrizeInEgg(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
-        🎁s.append(PrizeInEgg(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
-         🎁s.append(PrizeInEgg(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
+        prizes.removeAll()
+        prizes.append(PrizeInEgg(name: "陈景远的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2oyhqqrj305k05kaa2.jpg", order: 51))
+        prizes.append(PrizeInEgg(name: "卓世杰的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ov4zdwj305k05kt8p.jpg", order: 52))
+        prizes.append(PrizeInEgg(name: "谢琴的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxp2opdlkej305k05kweh.jpg", order: 53))
+        prizes.append(PrizeInEgg(name: "张广伟的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2okejv5j305k05kweh.jpg", order: 54))
+        prizes.append(PrizeInEgg(name: "陈希的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ofcc13j305k05kq2x.jpg", order: 55))
+        prizes.append(PrizeInEgg(name: "吴振宇的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2o91jndj305k05k0sq.jpg", order: 56))
+        prizes.append(PrizeInEgg(name: "黄轶轩的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
+        prizes.append(PrizeInEgg(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
+        prizes.append(PrizeInEgg(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
+         prizes.append(PrizeInEgg(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
         winnersNumber = 2
-        collectionView.reloadData()
+        bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
@@ -472,7 +476,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             //获取颜色
             var tempColor = "全"
             if 🥉Colors.count <= 0{
-                🥉Colors = ["绿","红","黄","青","蓝","紫"]
+                🥉Colors = ["绿","红","黄","粉","蓝","紫"]
             }
             tempColor = 🥉Colors.removeFirst()
             for _ in 0..<winnersNumber{

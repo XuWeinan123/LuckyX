@@ -48,8 +48,8 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
             cell.color.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         case "紫":
             cell.color.backgroundColor = #colorLiteral(red: 0.4705882353, green: 0.1568627451, blue: 1, alpha: 1)
-        case "青":
-            cell.color.backgroundColor = #colorLiteral(red: 0.2196078431, green: 0.8431372549, blue: 0.8352941176, alpha: 1)
+        case "粉":
+            cell.color.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.4784313725, blue: 0.5098039216, alpha: 1)
         default:
             cell.color.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
@@ -78,7 +78,7 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
                 let tempPerson = Person()
                 tempPerson.name = eachItems[0].description
                 tempPerson.color = eachItems[1].description
-                tempPerson.number = Int(eachItems[2].description) ?? -1
+                tempPerson.number = Int(eachItems[2].description.replacingOccurrences(of: "S", with: "7").replacingOccurrences(of: "IN", with: "6")) ?? -1
                 tempPerson.wish👀 = eachItems[3].description
                 editPersons.append(tempPerson)
             }
