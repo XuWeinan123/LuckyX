@@ -54,7 +54,17 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
             cell.color.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
         cell.name.text = tempPerson.name
-        cell.number.text = tempPerson.number.description
+        var numberStr = tempPerson.number.description
+        let numberStrFirst = numberStr.removeFirst()
+        switch numberStrFirst.description {
+        case "6":
+            numberStr = "IN\(numberStr)"
+        case "7":
+            numberStr = "S\(numberStr)"
+        default:
+            numberStr = "8\(numberStr)"
+        }
+        cell.number.text = numberStr
         cell.wish.text = tempPerson.wish👀
         return cell
     }

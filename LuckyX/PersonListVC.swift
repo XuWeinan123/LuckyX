@@ -36,6 +36,8 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         leftPersons = Array(realm.objects(Person.self).filter("isAvailable = true"))
         rightPersons = Array(realm.objects(Person.self).filter("isAvailable = false"))
         print("\(leftPersons?.count)+\(rightPersons?.count)")
+        //初始化title
+        self.navigationItem.title = "抽奖列表(\(leftPersons?.count.description ?? "NaN")/\(rightPersons?.count.description ?? "NaN"))"
     }
 
     // MARK: - Table view data source
@@ -43,17 +45,63 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! LeftPersonCell
             cell.name.text = leftPersons![indexPath.row].name
-            cell.number.text = leftPersons![indexPath.row].number.description
+            var numberStr = leftPersons![indexPath.row].number.description
+            let numberStrFirst = numberStr.removeFirst()
+            switch numberStrFirst.description {
+            case "6":
+                numberStr = "IN\(numberStr)"
+            case "7":
+                numberStr = "S\(numberStr)"
+            default:
+                numberStr = "8\(numberStr)"
+            }
+            cell.number.text = numberStr
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! RightPersonCell
             cell.name.text = rightPersons![indexPath.row].name
-            cell.number.text = rightPersons![indexPath.row].number.description
+            var numberStr = rightPersons![indexPath.row].number.description
+            let numberStrFirst = numberStr.removeFirst()
+            switch numberStrFirst.description {
+            case "6":
+                numberStr = "IN\(numberStr)"
+            case "7":
+                numberStr = "S\(numberStr)"
+            default:
+                numberStr = "8\(numberStr)"
+            }
+            cell.number.text = numberStr
             let realm = try! Realm()
             let tempNumber = rightPersons![indexPath.row].number
             let tempPrize = realm.objects(Prize.self).filter("masterNumber = \(tempNumber)").first
             cell.prize.text = tempPrize!.name
             return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.tag == 1{
+        //点击右侧列表将人物放回到未抽奖人员
+        print("点击了\(rightPersons![indexPath.row].name)")
+            let moveRightToLeftAlert = UIAlertController(title: "撤销中奖者", message: "撤销\(rightPersons![indexPath.row].name)的中奖纪录？\n\(rightPersons![indexPath.row].name)将会被挪到未中奖人员名单中", preferredStyle: .alert)
+            let moveRightToLeftAlertCancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let moveRightToLeftAlertSure = UIAlertAction(title: "确定", style: .default) { (action) in
+                print("移动人物\(action)")
+                let realm = try! Realm()
+                try! realm.write {
+                    self.rightPersons![indexPath.row].isAvailable = true
+                }
+                //删除奖品数据库中的条目
+                var tempPrize = realm.objects(Prize.self).filter("masterNumber = \(self.rightPersons![indexPath.row].number)").first
+                try! realm.write {
+                    realm.delete(tempPrize!)
+                }
+                self.initTwoLists()
+                self.leftTableView.reloadData()
+                self.rightTableView.reloadData()
+            }
+            moveRightToLeftAlert.addAction(moveRightToLeftAlertCancel)
+            moveRightToLeftAlert.addAction(moveRightToLeftAlertSure)
+            self.present(moveRightToLeftAlert, animated: true, completion: nil)
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
