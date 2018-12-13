@@ -399,7 +399,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         personsInEgg.removeAll()
         personCollectionView.reloadData()
         prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "Andy帮你实现心愿", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
+        prizes.append(PrizeInEgg(name: "心愿大奖", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
         winnersNumber = 1
         bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil) //传入空值，清空选择
@@ -456,7 +456,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         prizes.append(PrizeInEgg(name: "黄轶轩的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
         prizes.append(PrizeInEgg(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
         prizes.append(PrizeInEgg(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
-         prizes.append(PrizeInEgg(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
+        prizes.append(PrizeInEgg(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
+        prizes.append(PrizeInEgg(name: "Andy的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 61))
+        prizes.append(PrizeInEgg(name: "姜晗的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 62))
         winnersNumber = 2
         bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil)
@@ -539,6 +541,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return PersonInEgg(name: "没有人可以抽了", number: -1,color:"全")
         }
     }
+    /**直接访问数据库抽取一个数据实例，不做其他处理*/
     func newGetALuckyBitch()->Person{
         //获取到当前可用的用户
         let realm = try! Realm()

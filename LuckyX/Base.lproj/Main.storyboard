@@ -747,13 +747,12 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azB-WO-oBO">
-                                <rect key="frame" x="939" y="146" width="48" height="336"/>
+                                <rect key="frame" x="939" y="146" width="133" height="336"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkH-24-fio">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Wwr-gf-ihm"/>
-                                            <constraint firstAttribute="width" constant="48" id="rNm-kZ-KLz"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="绿色"/>
@@ -765,9 +764,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcg-8z-hkz">
-                                        <rect key="frame" x="0.0" y="48" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="48" width="133" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="YVg-YL-PTT"/>
                                             <constraint firstAttribute="height" constant="48" id="gc0-Fb-KmO"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -778,9 +776,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlG-oU-eFF">
-                                        <rect key="frame" x="0.0" y="96" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="96" width="133" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="JAe-DQ-ZCD"/>
                                             <constraint firstAttribute="height" constant="48" id="SnD-Vv-aDN"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -791,10 +788,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXt-gt-rB9">
-                                        <rect key="frame" x="0.0" y="144" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="144" width="133" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="IDt-Mn-KXB"/>
-                                            <constraint firstAttribute="width" constant="48" id="MHf-Ja-uFW"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="粉色"/>
@@ -804,9 +800,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ny-9i-Kyd">
-                                        <rect key="frame" x="0.0" y="192" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="192" width="133" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="sjl-iE-Ntx"/>
                                             <constraint firstAttribute="height" constant="48" id="wIM-45-NR5"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -817,10 +812,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fs-s5-T7S">
-                                        <rect key="frame" x="0.0" y="240" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="240" width="133" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="t46-tA-6EV"/>
-                                            <constraint firstAttribute="width" constant="48" id="tOQ-j0-pZV"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" backgroundImage="紫色"/>
@@ -830,9 +824,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="7" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hh-gZ-ICV">
-                                        <rect key="frame" x="0.0" y="288" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="288" width="133" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="FTj-gU-hFc"/>
                                             <constraint firstAttribute="height" constant="48" id="b7p-yF-7aA"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -852,7 +845,7 @@
                                     <constraint firstItem="2fs-s5-T7S" firstAttribute="leading" secondItem="azB-WO-oBO" secondAttribute="leading" id="9cr-HS-IT8"/>
                                     <constraint firstItem="Zcg-8z-hkz" firstAttribute="leading" secondItem="azB-WO-oBO" secondAttribute="leading" id="BuI-Fc-Ibw"/>
                                     <constraint firstAttribute="trailing" secondItem="8Ny-9i-Kyd" secondAttribute="trailing" id="D2D-uk-4hm"/>
-                                    <constraint firstAttribute="width" constant="48" id="FeY-Em-nMX"/>
+                                    <constraint firstAttribute="width" constant="133" id="FeY-Em-nMX"/>
                                     <constraint firstItem="8Ny-9i-Kyd" firstAttribute="top" secondItem="dXt-gt-rB9" secondAttribute="bottom" id="IZs-gS-nlj"/>
                                     <constraint firstItem="Zcg-8z-hkz" firstAttribute="top" secondItem="VkH-24-fio" secondAttribute="bottom" id="Kd2-ET-gm7"/>
                                     <constraint firstItem="2hh-gZ-ICV" firstAttribute="leading" secondItem="azB-WO-oBO" secondAttribute="leading" id="LCa-Er-pos"/>
@@ -1463,8 +1456,8 @@
         <image name="刷新" width="72" height="72"/>
         <image name="名单设置" width="100" height="40"/>
         <image name="奖品栏" width="1024" height="186"/>
-        <image name="彩色" width="48" height="48"/>
-        <image name="彩色 大" width="48" height="48"/>
+        <image name="彩色" width="133" height="48"/>
+        <image name="彩色 大" width="133" height="48"/>
         <image name="抽奖模式小图背景" width="72" height="72"/>
         <image name="抽奖模式设置bg" width="350" height="216"/>
         <image name="抽奖规则选择背景" width="175" height="108"/>
@@ -1472,25 +1465,25 @@
         <image name="特等奖" width="48" height="48"/>
         <image name="特等奖 选中" width="48" height="48"/>
         <image name="电视机" width="678" height="516"/>
-        <image name="粉色" width="48" height="48"/>
-        <image name="粉色 大" width="48" height="48"/>
-        <image name="紫色" width="48" height="48"/>
-        <image name="紫色 大" width="48" height="48"/>
+        <image name="粉色" width="133" height="48"/>
+        <image name="粉色 大" width="133" height="48"/>
+        <image name="紫色" width="133" height="48"/>
+        <image name="紫色 大" width="133" height="48"/>
         <image name="红包雨" width="48" height="48"/>
         <image name="红包雨 选中" width="48" height="48"/>
-        <image name="红色" width="48" height="48"/>
-        <image name="红色 大" width="48" height="48"/>
-        <image name="绿色" width="48" height="48"/>
-        <image name="绿色 大" width="48" height="48"/>
-        <image name="蓝色" width="48" height="48"/>
-        <image name="蓝色 大" width="48" height="48"/>
+        <image name="红色" width="133" height="48"/>
+        <image name="红色 大" width="133" height="48"/>
+        <image name="绿色" width="133" height="48"/>
+        <image name="绿色 大" width="133" height="48"/>
+        <image name="蓝色" width="133" height="48"/>
+        <image name="蓝色 大" width="133" height="48"/>
         <image name="详情" width="18" height="18"/>
         <image name="选择按钮" width="174" height="174"/>
         <image name="金蛋" width="112" height="112"/>
         <image name="阳光普照奖" width="48" height="48"/>
         <image name="阳光普照奖 选中" width="48" height="48"/>
-        <image name="黄色" width="48" height="48"/>
-        <image name="黄色 大" width="48" height="48"/>
+        <image name="黄色" width="133" height="48"/>
+        <image name="黄色 大" width="133" height="48"/>
         <image name="🍳" width="200" height="200"/>
     </resources>
 </document>

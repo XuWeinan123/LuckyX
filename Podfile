@@ -10,5 +10,6 @@ target 'LuckyX' do
   pod 'RealmSwift'
   pod 'lottie-ios'
   pod 'JXPopupView'
+  pod 'Popover'
 
 end
