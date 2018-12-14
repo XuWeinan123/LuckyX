@@ -65,7 +65,7 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
             numberStr = "8\(numberStr)"
         }
         cell.number.text = numberStr
-        cell.wish.text = tempPerson.wish👀
+        cell.wish.text = tempPerson.wish
         return cell
     }
     func textViewDidChange(_ textView: UITextView) {
@@ -82,14 +82,14 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
                 tempPerson.name = "输入错误"
                 tempPerson.color = "❌"
                 tempPerson.number = -1
-                tempPerson.wish👀 = "输入错误"
+                tempPerson.wish = "输入错误"
                 editPersons.append(tempPerson)
             }else{
                 let tempPerson = Person()
                 tempPerson.name = eachItems[0].description
                 tempPerson.color = eachItems[1].description
                 tempPerson.number = Int(eachItems[2].description.replacingOccurrences(of: "S", with: "7").replacingOccurrences(of: "IN", with: "6")) ?? -1
-                tempPerson.wish👀 = eachItems[3].description
+                tempPerson.wish = eachItems[3].description
                 editPersons.append(tempPerson)
             }
         }

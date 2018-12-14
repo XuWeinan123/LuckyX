@@ -16,7 +16,7 @@ class Person: Object {
     @objc dynamic var number = -1
     @objc dynamic var isAvailable = true
     @objc dynamic var color = "无"
-    @objc dynamic var wish👀 = "无心愿"
+    @objc dynamic var wish = "未填写心愿"
     override static func primaryKey() -> String? {
         return "number"
     }
@@ -545,9 +545,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     func newGetALuckyBitch()->Person{
         //获取到当前可用的用户
         let realm = try! Realm()
-        var availablePerson = realm.objects(Person.self).filter("isAvailable = true")
+        let availablePerson = realm.objects(Person.self).filter("isAvailable = true")
         guard availablePerson.count > 0 else{
-            var tempPerson = Person()
+            let tempPerson = Person()
             tempPerson.name = "没有人可以抽了"
             tempPerson.number = 10000000
             return tempPerson
@@ -556,8 +556,42 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return arc4random() % 2 > 0
         }
         let luckyperson = availablePersonArray.removeFirst()
-        print("临时抽出的人类是：\(luckyperson.name)")
         return luckyperson
+    }
+    /**直接访问数据库抽取一个有心愿的数据实例，不做其他处理*/
+    func newGetALuckyBitchHasWish()->Person{
+        //获取到当前可用的用户
+        let realm = try! Realm()
+        let availablePerson = realm.objects(Person.self).filter("isAvailable = true AND wish != '未填写心愿'")
+        guard availablePerson.count > 0 else{
+            let tempPerson = Person()
+            tempPerson.name = "没有人可以抽了"
+            tempPerson.number = 10000000
+            return tempPerson
+        }
+        var availablePersonArray = availablePerson.sorted { (person1, person2) -> Bool in
+            return arc4random() % 2 > 0
+        }
+        let luckyperson = availablePersonArray.removeFirst()
+        return luckyperson
+    }
+    /**直接访问数据库抽取number个数据实例，不做其他处理*/
+    func newGetSomeLuckyBitchs(number:Int)->[Person]{
+        let realm = try! Realm()
+        var returnPersons:[Person] = []
+        for _ in 0..<number{
+            let tempPerson = newGetALuckyBitch()
+            try! realm.write {
+                tempPerson.isAvailable = false
+            }
+            returnPersons.append(tempPerson)
+        }
+        for person in returnPersons{
+            try! realm.write {
+                person.isAvailable = true
+            }
+        }
+        return returnPersons
     }
     func getALuckyBitchByColor(color:String)->PersonInEgg {
         if color == "全"{
@@ -588,7 +622,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         let getPictureFromLibraryButton = UIAlertAction(title: "开始抽取", style:.destructive){ (action) in
             let tempPerson = self.newGetALuckyBitch()
-            let cheatingResultAlert = UIAlertController(title: "随机抽取", message: "\(tempPerson.color)色方阵的\(tempPerson.name)中奖了！", preferredStyle: .alert)
+            let cheatingResultAlert = UIAlertController(title: "随机抽取", message: "\(tempPerson.color)色方阵的\(tempPerson.name)\(tempPerson.name == "周璇" ? "(\(tempPerson.number))" : "")中奖了！", preferredStyle: .alert)
             let cheatingResultAlertCancel = UIAlertAction(title: "这个不要", style: .cancel, handler: nil)
             let cheatingResultAlertSure = UIAlertAction(title: "就这个", style: .default, handler: { (action) in
                 //新建一个奖品条目
