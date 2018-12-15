@@ -1073,8 +1073,8 @@
                         <outlet property="animPlaceHolderView" destination="n8R-37-VkS" id="0za-AX-JKA"/>
                         <outlet property="bottomPrizeCollectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
                         <outlet property="current🎁Mode" destination="x2j-k1-72w" id="gaJ-am-kly"/>
+                        <outlet property="eggPersonCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
-                        <outlet property="personCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
                         <outlet property="rules" destination="ylE-AC-QeG" id="rrH-YF-Fd4"/>
                         <outlet property="sunshineBtn" destination="Drs-n2-PRz" id="EVq-oA-X0x"/>
