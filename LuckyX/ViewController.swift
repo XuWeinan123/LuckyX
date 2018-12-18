@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Lottie
 import AVKit
+import Popover
 
 class Person: Object {
     @objc dynamic var name = ""
@@ -27,10 +28,8 @@ class Prize: Object{
 }
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    var prizes:[PrizeInEgg] = []
-    var personsInEgg:[PersonInEgg] = []
+    var bottomPrizes:[BottomPrize] = []
     var currentPrizeIndex = -1
-    var winnersNumber = 1
     var current🎁 = "无奖品"
     @IBOutlet var current🎁Mode:UILabel!
     var current🎨 = "全"
@@ -44,7 +43,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @IBOutlet weak var personCollectionViewWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var sunshineBtn: UIButton!
+    //阳光普照下的抽奖按钮
+    @IBOutlet weak var sunshineResultBtn: UIButton!
     @IBOutlet weak var LeftBtnsView: UIView!
     @IBOutlet weak var rules: UIImageView!
     //左侧按钮
@@ -68,31 +68,20 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
-            return prizes.count
+            return bottomPrizes.count
         }else{
-            print(personForNow.count)
             return personForNow.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 0{
-            if indexPath.row == prizes.count{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PrizeCell
-                cell.textLabel.isHidden = true
-                cell.prizeImageView.isHidden = true
-                cell.selectMask.image = UIImage(named: "添加按钮")
-                cell.selectMask.isHidden = false
-                return cell
-            }else{
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PrizeCell
-                cell.textLabel.text = "\(prizes[indexPath.row].name)\(prizes[indexPath.row].number == 1 ? "" : " × \(prizes[indexPath.row].number)")"
-                   //
-                cell.prizeImageView.imageFromURL(prizes[indexPath.row].imageUrl, placeholder: UIImage.init(named: "OPPO")!, fadeIn: true, shouldCacheImage: true) { (image) in
-                }
-                cell.selectMask.isHidden = !prizes[indexPath.row].isSelectd
-                return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PrizeCell
+            //如果奖品数为1，则不显示数量
+            cell.textLabel.text = "\(bottomPrizes[indexPath.row].name)\(bottomPrizes[indexPath.row].number == 1 ? "" : " × \(bottomPrizes[indexPath.row].number)")"
+            cell.prizeImageView.imageFromURL(bottomPrizes[indexPath.row].imageUrl, placeholder: UIImage.init(named: "OPPO")!, fadeIn: true, shouldCacheImage: true) { (image) in
             }
-            //cell.selectMask.isHidden = !prizes[indexPath.row].isSelectd
+            cell.selectMask.isHidden = !bottomPrizes[indexPath.row].isSelectd
+            return cell
             
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PersonCell
@@ -108,62 +97,66 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             default:
                 numberStr = "8\(numberStr)"
             }
+            
             cell.label.text = "\(tempPerson.name)\n\(numberStr)"
+            
+            //三等奖需要换用颜色蛋蛋
             if current🎁Mode.text == "三等奖"{
                 cell.goldEggImage.image = UIImage(named: "\(tempPerson.color)蛋")
             }else{
                 cell.goldEggImage.image = UIImage(named: "金蛋")
             }
             cell.unsmash()
+            
             return cell
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //奖品选择
         if collectionView.tag == 0{
-            if indexPath.row != prizes.count{
-                //选择前判断颜色是否选中
-                guard current🎨 != "无" else{
-                    let alertController = UIAlertController.init(title: "无颜色", message: "给个面子，请先选择合适的颜色", preferredStyle:.alert)
-                    let cancel = UIAlertAction.init(title: "好的", style: UIAlertAction.Style.cancel) { (action:UIAlertAction) ->() in
-                        print("处理完成\(action)")
-                    }
-                    alertController.addAction(cancel);
-                    self.present(alertController, animated: true, completion: nil)
-                    return
+            //选择前判断颜色是否选中
+            guard current🎨 != "无" else{
+                let alertController = UIAlertController.init(title: "无颜色", message: "给个面子，请先选择合适的颜色", preferredStyle:.alert)
+                let cancel = UIAlertAction.init(title: "好的", style: UIAlertAction.Style.cancel) { (action:UIAlertAction) ->() in
+                    print("处理完成\(action)")
                 }
-                
-                //调整UI
-                rules.isHidden = true
-                for i in 0..<prizes.count{
-                    prizes[i].isSelectd = false
-                }
-                prizes[indexPath.row].isSelectd = true
-                currentPrizeIndex = indexPath.row
-                current🎁 = prizes[currentPrizeIndex].name
-                collectionView.reloadData()
-                print("当前所选择的\(prizes[currentPrizeIndex].name)")
-                
-                //抽奖
-                getSomeLuckyBitchs()
-                
-                //播放动画，联动UI
-                player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
-                player.play()
-                eggPersonCollectionView.alpha = 0
-                UIView.animate(withDuration: 0.2, delay: 1.5, options: UIView.AnimationOptions.curveLinear, animations: {
-                    self.eggPersonCollectionView.alpha = 1
-                }, completion: nil)
-                sunshineBtn.alpha = 0
-                UIView.animate(withDuration: 0.2, delay: 1, options: UIView.AnimationOptions.curveLinear, animations: {
-                    self.sunshineBtn.alpha = 1
-                }, completion: nil)
-            }else{
-                for i in 0..<(prizes.count){
-                    prizes[i].isSelectd = false
-                }
-                print("添加新奖品")
+                alertController.addAction(cancel);
+                self.present(alertController, animated: true, completion: nil)
+                return
             }
+            
+            //调整UI
+            rules.isHidden = true
+            for i in 0..<bottomPrizes.count{
+                bottomPrizes[i].isSelectd = false
+            }
+            bottomPrizes[indexPath.row].isSelectd = true
+            currentPrizeIndex = indexPath.row
+            current🎁 = bottomPrizes[currentPrizeIndex].name
+            collectionView.reloadData()
+            print("当前所选择的奖品\(bottomPrizes[currentPrizeIndex].name)")
+            
+            //抽奖
+            drawALottery()
+            
+            //播放动画，联动UI
+            player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
+            player.play()
+            eggPersonCollectionView.alpha = 0
+            UIView.animate(withDuration: 0.2, delay: 1.5, options: UIView.AnimationOptions.curveLinear, animations: {
+                self.eggPersonCollectionView.alpha = 1
+            }, completion: nil)
+            
+            sunshineResultBtn.alpha = 0
+            UIView.animate(withDuration: 0.2, delay: 1, options: UIView.AnimationOptions.curveLinear, animations: {
+                self.sunshineResultBtn.alpha = 1
+            }, completion: nil)
+            
+            //如果是阳光普照奖需要重新设置按钮
+            if current🎁Mode.text == "阳光普照奖"{
+                sunshineResultBtn.setTitle("开始抽奖", for: .normal)
+            }
+            
         }else{
             //砸蛋
             if current🎁 == "无奖品"{
@@ -176,11 +169,38 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 return
             }else{
                 (collectionView.cellForItem(at: indexPath) as! PersonCell).smash()
+                //如果砸的是特等奖的蛋，打印出心愿
+                if current🎁Mode.text == "特等奖"{
+                    print(personForNow[indexPath.row].wish)
+                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+                        let startPoint = CGPoint(x: collectionView.frame.origin.x+collectionView.frame.width/2, y: collectionView.frame.origin.y+collectionView.frame.height)
+                        let wishText = UILabel(frame: CGRect(x: 10, y: 0, width: 108/9*19.5-20, height: 108))
+                        wishText.text = self.personForNow[indexPath.row].wish.replacingOccurrences(of: "_", with: " ")
+                        wishText.textAlignment = NSTextAlignment.center
+                        wishText.numberOfLines = 1
+                        wishText.sizeToFit()
+                        let aView = UIView(frame: CGRect(x: wishText.frame.origin.x-10, y: wishText.frame.origin.y-10, width: wishText.frame.width+20, height: wishText.frame.height+20))
+                        wishText.frame.origin.y += 20
+                        aView.addSubview(wishText)
+                        let popover = Popover()
+                        popover.show(aView, point: startPoint)
+                    }
+                }
                 let realm = try! Realm()
                 try! realm.write {
                     personForNow[indexPath.row].isAvailable = false
                 }
-                //写入奖品
+                //写入奖品，如果是特等奖，判断特等奖中奖用户是不是已经中过奖了，如果中过奖了那么更新一下。
+                if current🎁Mode.text == "特等奖"{
+                    let realm = try! Realm()
+                    let tempResult = realm.objects(Prize.self).filter("masterNumber = \(personForNow[indexPath.row].number)")
+                    if tempResult.count != 0{
+                        try! realm.write {
+                            tempResult.first?.name = (tempResult.first?.name)! + " + 心愿大奖"
+                        }
+                        return
+                    }
+                }
                 let prize = Prize()
                 prize.name = current🎁
                 prize.masterNumber = personForNow[indexPath.row].number
@@ -297,37 +317,40 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         sender!.isSelected = true
         
         //清空底部奖品选择
-        for i in 0..<prizes.count{
-            prizes[i].isSelectd = false
+        for i in 0..<bottomPrizes.count{
+            bottomPrizes[i].isSelectd = false
         }
         bottomPrizeCollectionView.reloadData()
     }
-    @IBAction func switch2🥇(_ sender: UIButton){
-        //把右侧按钮都enable
+    @IBAction func switch2🥉(_ sender: UIButton){
+        //把右侧按钮都disable掉
         for btn in rightBtns{
-            btn.isEnabled = true
+            btn.isEnabled = false
         }
         
-        current🎁Mode.text = "一等奖"
+        //调整UI
+        current🎁Mode.text = "三等奖"
+        rules.image = UIImage(named: "三等奖 规则")
         eggPersonCollectionView.isHidden = false
-        sunshineBtn.isHidden = true
-        rules.image = UIImage(named: "一等奖 规则")
+        sunshineResultBtn.isHidden = true
         rules.isHidden = false
         current🎁 = "无奖品"
-        personCollectionViewWidthConstraint.constant = 200
+        personCollectionViewWidthConstraint.constant = 620
+        
         //清空鸡蛋区域
-        personsInEgg.removeAll()
+        personForNow.removeAll()
         eggPersonCollectionView.reloadData()
-        prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "网易按摩椅", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc8ypn02qj30by0byn0e.jpg",order:11))
-        prizes.append(PrizeInEgg(name: "PS4", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh1zo6mp8j30ci0cijs0.jpg",order:12))
-        prizes.append(PrizeInEgg(name: "平衡车", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh20zbcbrj30by0by0t3.jpg",order:13))
-        prizes.append(PrizeInEgg(name: "Switch", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxc93ga4m8j30by0byjty.jpg",order:14))
-        prizes.append(PrizeInEgg(name: "家庭影院投影仪", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxh22pv8fmj308z08zgm7.jpg",order:15))
-        prizes.append(PrizeInEgg(name: "R17", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc95vqz1ij30by0bywff.jpg",order:16))
-        winnersNumber = 1
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "松下吹风机", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5fmz0fnj305k05k3z8.jpg", order: 31))
+        bottomPrizes.append(BottomPrize(name: "雅诗兰黛", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5nv915qj305k05kq3i.jpg", order: 32))
+        bottomPrizes.append(BottomPrize(name: "飞利浦电动牙刷", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5n7tdzwj305k05kmxl.jpg", order: 33))
+        bottomPrizes.append(BottomPrize(name: "飞利浦剃须刀", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5q4zf32j305k05kdgh.jpg", order: 34))
+        bottomPrizes.append(BottomPrize(name: "300元购物卡", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh3uek0qcj309q09q3yz.jpg", order: 35))
+        bottomPrizes.append(BottomPrize(name: "行李箱", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5xl3odbj305k05k3yz.jpg", order: 36))
         bottomPrizeCollectionView.reloadData()
-        sideBtnsSelect(nil)
+        
+        //设置全体人员参与
+        sideBtnsSelect(RightBtnSeven)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
     }
@@ -337,80 +360,88 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = true
         }
         
+        //调整UI
         current🎁Mode.text = "二等奖"
-        eggPersonCollectionView.isHidden = false
-        sunshineBtn.isHidden = true
         rules.image = UIImage(named: "二等奖 规则")
+        eggPersonCollectionView.isHidden = false
+        sunshineResultBtn.isHidden = true
         rules.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 410
-        //清空鸡蛋区域
-        personsInEgg.removeAll()
-        eggPersonCollectionView.reloadData()
-        prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "700元购物卡", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr69t4kquj305k05kq3g.jpg", order: 21))
-        prizes.append(PrizeInEgg(name: "IH电饭煲", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6intxvej305k05k3z3.jpg", order: 22))
-        prizes.append(PrizeInEgg(name: "cherry键盘", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh39jiaa8j30by0byaaw.jpg", order: 23))
-        prizes.append(PrizeInEgg(name: "ofree耳机", number: 2, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh39o5wzbj30u00u0wgi.jpg", order: 24))
-        prizes.append(PrizeInEgg(name: "蓝牙音箱", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr6n67g88j305k05kmxk.jpg", order: 25))
-        prizes.append(PrizeInEgg(name: "SKII套装", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6ovxsbwj305k05kt9c.jpg", order: 26))
-        winnersNumber = 2
-        bottomPrizeCollectionView.reloadData()
-        sideBtnsSelect(nil) //传入空值，清空选择
-        //调整动画时间戳
-        player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
-    }
-    @IBAction func switch2🥉(_ sender: UIButton){
-        //把右侧按钮都disable掉
-        for btn in rightBtns{
-            btn.isEnabled = false
-        }
         
-        current🎁Mode.text = "三等奖"
-        eggPersonCollectionView.isHidden = false
-        sunshineBtn.isHidden = true
-        rules.image = UIImage(named: "三等奖 规则")
-        rules.isHidden = false
-        current🎁 = "无奖品"
-        personCollectionViewWidthConstraint.constant = 620
         //清空鸡蛋区域
         personForNow.removeAll()
         eggPersonCollectionView.reloadData()
-        prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "松下吹风机", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5fmz0fnj305k05k3z8.jpg", order: 31))
-        prizes.append(PrizeInEgg(name: "雅诗兰黛", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5nv915qj305k05kq3i.jpg", order: 32))
-        prizes.append(PrizeInEgg(name: "飞利浦电动牙刷", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5n7tdzwj305k05kmxl.jpg", order: 33))
-        prizes.append(PrizeInEgg(name: "飞利浦剃须刀", number: 3, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr5q4zf32j305k05kdgh.jpg", order: 34))
-        prizes.append(PrizeInEgg(name: "300元购物卡", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh3uek0qcj309q09q3yz.jpg", order: 35))
-        prizes.append(PrizeInEgg(name: "行李箱", number: 3, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr5xl3odbj305k05k3yz.jpg", order: 36))
-        winnersNumber = 3
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "700元购物卡", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr69t4kquj305k05kq3g.jpg", order: 21))
+        bottomPrizes.append(BottomPrize(name: "IH电饭煲", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6intxvej305k05k3z3.jpg", order: 22))
+        bottomPrizes.append(BottomPrize(name: "cherry键盘", number: 2, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh39jiaa8j30by0byaaw.jpg", order: 23))
+        bottomPrizes.append(BottomPrize(name: "ofree耳机", number: 2, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh39o5wzbj30u00u0wgi.jpg", order: 24))
+        bottomPrizes.append(BottomPrize(name: "蓝牙音箱", number: 2, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxr6n67g88j305k05kmxk.jpg", order: 25))
+        bottomPrizes.append(BottomPrize(name: "SKII套装", number: 2, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr6ovxsbwj305k05kt9c.jpg", order: 26))
         bottomPrizeCollectionView.reloadData()
-        sideBtnsSelect(RightBtnSeven)
-        //调整动画时间戳x
+        
+        //传入空值，清空选择
+        sideBtnsSelect(nil)
+        //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
     }
-    @IBAction func switch2💥(_ sender: UIButton) {
+    @IBAction func switch2🥇(_ sender: UIButton){
         //把右侧按钮都enable
         for btn in rightBtns{
             btn.isEnabled = true
         }
         
-        current🎁Mode.text = "特等奖"
+        //调整UI
+        current🎁Mode.text = "一等奖"
+        rules.image = UIImage(named: "一等奖 规则")
         eggPersonCollectionView.isHidden = false
-        sunshineBtn.isHidden = true
-        //rules.text = "特等奖的规则"
-        rules.image = UIImage(named: "特等奖 规则")
+        sunshineResultBtn.isHidden = true
         rules.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 200
+        
         //清空鸡蛋区域
         personForNow.removeAll()
         eggPersonCollectionView.reloadData()
-        prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "心愿大奖", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
-        winnersNumber = 1
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "网易按摩椅", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc8ypn02qj30by0byn0e.jpg",order:11))
+        bottomPrizes.append(BottomPrize(name: "PS4", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxh1zo6mp8j30ci0cijs0.jpg",order:12))
+        bottomPrizes.append(BottomPrize(name: "平衡车", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxh20zbcbrj30by0by0t3.jpg",order:13))
+        bottomPrizes.append(BottomPrize(name: "Switch", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxc93ga4m8j30by0byjty.jpg",order:14))
+        bottomPrizes.append(BottomPrize(name: "家庭影院投影仪", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxh22pv8fmj308z08zgm7.jpg",order:15))
+        bottomPrizes.append(BottomPrize(name: "R17", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxc95vqz1ij30by0bywff.jpg",order:16))
         bottomPrizeCollectionView.reloadData()
-        sideBtnsSelect(nil) //传入空值，清空选择
+        
+        //传入空值，清空选择
+        sideBtnsSelect(nil)
+        //调整动画时间戳
+        player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
+    }
+    @IBAction func switch2💥(_ sender: UIButton) {
+        //把右侧按钮都disable
+        for btn in rightBtns{
+            btn.isEnabled = false
+        }
+        
+        //调整UI
+        current🎁Mode.text = "特等奖"
+        rules.image = UIImage(named: "特等奖 规则")
+        eggPersonCollectionView.isHidden = false
+        sunshineResultBtn.isHidden = true
+        rules.isHidden = false
+        current🎁 = "无奖品"
+        personCollectionViewWidthConstraint.constant = 200
+        
+        //清空鸡蛋区域
+        personForNow.removeAll()
+        eggPersonCollectionView.reloadData()
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "心愿大奖", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxq74geo70j305k05kq33.jpg", order: 101))
+        bottomPrizeCollectionView.reloadData()
+        
+        //传入空值，清空选择
+        sideBtnsSelect(RightBtnSeven)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
     }
@@ -420,23 +451,27 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = false
         }
         
+        //调整UI
         current🎁Mode.text = "阳光普照奖"
-        eggPersonCollectionView.isHidden = true
-        sunshineBtn.isHidden = false
         rules.image = UIImage(named: "阳光普照奖 规则")
+        eggPersonCollectionView.isHidden = true
+        sunshineResultBtn.isHidden = false
+        sunshineResultBtn.setTitle("开始抽奖", for: .normal)
         rules.isHidden = false
         current🎁 = "无奖品"
-        sunshineBtn.alpha = 0
+        sunshineResultBtn.alpha = 0
         
+        //清空鸡蛋区域
         personForNow.removeAll()
-        prizes.append(PrizeInEgg(name: "100元购物卡", number: 88, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh3waxw10j309q09qt9b.jpg", order: 41))
-        winnersNumber = 88
+        eggPersonCollectionView.reloadData()
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "100元购物卡", number: 88, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxh3waxw10j309q09qt9b.jpg", order: 41))
         bottomPrizeCollectionView.reloadData()
+        
+        //设置全量抽取
         sideBtnsSelect(RightBtnSeven)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
-        
-        sunshineBtn.setTitle("开始抽奖", for: .normal)
     }
     @IBAction func switch2🌧(_ sender: UIButton){
         //把右侧按钮都enable
@@ -444,57 +479,43 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             btn.isEnabled = true
         }
         
+        //调整UI
         current🎁Mode.text = "红包雨"
         eggPersonCollectionView.isHidden = false
-        sunshineBtn.isHidden = true
+        sunshineResultBtn.isHidden = true
         rules.image = UIImage(named: "红包雨 规则")
         rules.isHidden = false
         current🎁 = "无奖品"
         personCollectionViewWidthConstraint.constant = 410
+        
         //清空鸡蛋区域
         personForNow.removeAll()
         eggPersonCollectionView.reloadData()
-        prizes.removeAll()
-        prizes.append(PrizeInEgg(name: "陈景远的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2oyhqqrj305k05kaa2.jpg", order: 51))
-        prizes.append(PrizeInEgg(name: "卓世杰的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ov4zdwj305k05kt8p.jpg", order: 52))
-        prizes.append(PrizeInEgg(name: "谢琴的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxp2opdlkej305k05kweh.jpg", order: 53))
-        prizes.append(PrizeInEgg(name: "张广伟的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2okejv5j305k05kweh.jpg", order: 54))
-        prizes.append(PrizeInEgg(name: "陈希的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ofcc13j305k05kq2x.jpg", order: 55))
-        prizes.append(PrizeInEgg(name: "吴振宇的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2o91jndj305k05k0sq.jpg", order: 56))
-        prizes.append(PrizeInEgg(name: "黄轶轩的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
-        prizes.append(PrizeInEgg(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
-        prizes.append(PrizeInEgg(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
-        prizes.append(PrizeInEgg(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
-        prizes.append(PrizeInEgg(name: "Andy的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 61))
-        prizes.append(PrizeInEgg(name: "姜晗的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 62))
-        winnersNumber = 2
+        bottomPrizes.removeAll()
+        bottomPrizes.append(BottomPrize(name: "陈景远的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2oyhqqrj305k05kaa2.jpg", order: 51))
+        bottomPrizes.append(BottomPrize(name: "卓世杰的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ov4zdwj305k05kt8p.jpg", order: 52))
+        bottomPrizes.append(BottomPrize(name: "谢琴的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxp2opdlkej305k05kweh.jpg", order: 53))
+        bottomPrizes.append(BottomPrize(name: "张广伟的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2okejv5j305k05kweh.jpg", order: 54))
+        bottomPrizes.append(BottomPrize(name: "陈希的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2ofcc13j305k05kq2x.jpg", order: 55))
+        bottomPrizes.append(BottomPrize(name: "吴振宇的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2o91jndj305k05k0sq.jpg", order: 56))
+        bottomPrizes.append(BottomPrize(name: "黄轶轩的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fxp2j2guctj305k05kdfu.jpg", order: 57))
+        bottomPrizes.append(BottomPrize(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
+        bottomPrizes.append(BottomPrize(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
+        bottomPrizes.append(BottomPrize(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
+        bottomPrizes.append(BottomPrize(name: "Andy的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 61))
+        bottomPrizes.append(BottomPrize(name: "姜晗的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 62))
         bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil)
         //调整动画时间戳
         player.seek(to: CMTime.init(seconds: 0, preferredTimescale: CMTimeScale(1.0)))
     }
-    func getSomeLuckyBitchs() {
-        let realm = try! Realm()
-    
+    func drawALottery() {
+        
+        //移除金蛋数组
         personForNow.removeAll()
-        //如果是阳光普照奖，直接出名字
-        if current🎁Mode.text == "阳光普照奖"{
-            personsInEgg.removeAll()
-            for _ in 0..<winnersNumber{
-                getALuckyBitchByColor(color: current🎨)
-            }
-            //抽完统统恢复可用状态
-            for person in personForNow{
-                print(person.name)
-                try! realm.write {
-                    person.isAvailable = true
-                }
-            }
-        //如果是三等奖，需要先选颜色
-        }else if current🎁Mode.text == "三等奖"{
-            //移除金蛋数组
-            personForNow.removeAll()
-            //按条件抽取中奖用户
+        
+        switch current🎁Mode.text {
+        case "三等奖":
             //-选定随机颜色
             if 🥉Colors.count <= 0{
                 🥉Colors = ["绿","红","黄","粉","蓝","紫"]
@@ -502,72 +523,41 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             🥉Colors.sort { (str1, str2) -> Bool in
                 return arc4random() % 2 > 0
             }
-            var tempColor = 🥉Colors.removeFirst()
-            //按条件抽取中奖用户
-            var resultPersons = newGetSomeLuckyBitchsByColor(number: 3, color: tempColor)
+            let tempColor = 🥉Colors.removeFirst()
+            //抽取中奖用户
+            let resultPersons = newGetSomeLuckyBitchsByColor(number: 3, color: tempColor)
             //放入金蛋数组
             for resultPerson in resultPersons{
                 personForNow.append(resultPerson)
             }
-            eggPersonCollectionView.reloadData()
-            
-//
-//            personsInEgg.removeAll()
-//            //获取颜色
-//            var tempColor = "全"
-//            if 🥉Colors.count <= 0{
-//                🥉Colors = ["绿","红","黄","粉","蓝","紫"]
-//            }
-//            tempColor = 🥉Colors.removeFirst()
-//            for _ in 0..<winnersNumber{
-//                let tempPerson = getALuckyBitchByColor(color: tempColor)
-//                personsInEgg.append(ViewController.PersonInEgg(name: tempPerson.name, number: tempPerson.number,color:tempPerson.color))
-//            }
-//            //抽完统统恢复可用状态
-//            for person in personForNow{
-//                try! realm.write {
-//                    person.isAvailable = true
-//                }
-//            }
-//            eggPersonCollectionView.reloadData()
-        //剩下一二等奖
-        }else{
-            personsInEgg.removeAll()
-            for _ in 0..<winnersNumber{
-                let tempPerson = getALuckyBitchByColor(color: current🎨)
-                personsInEgg.append(ViewController.PersonInEgg(name: tempPerson.name, number: tempPerson.number,color:tempPerson.color))
+        case "二等奖","红包雨":
+            //抽取中奖用户
+            let resultPersons = newGetSomeLuckyBitchsByColor(number: 2, color: current🎨)
+            //放入金蛋数组
+            for resultPerson in resultPersons{
+                personForNow.append(resultPerson)
             }
-            eggPersonCollectionView.reloadData()
-            //抽完统统恢复可用状态
-            for person in personForNow{
-                try! realm.write {
-                    person.isAvailable = true
-                }
+        case "一等奖":
+            //抽取中奖用户
+            let resultPerson = newGetALuckyBitchByColor(color: current🎨)
+            //放入金蛋数组
+            personForNow.append(resultPerson)
+        case "特等奖":
+            //抽取中奖用户
+            let resultPerson = newGetALuckyBitchHasWish()
+            //放入金蛋数组
+            personForNow.append(resultPerson)
+        case "阳光普照奖":
+            //抽取中奖用户
+            let resultPersons = newGetSomeLuckyBitchs(number: 88)
+            //放入金蛋数组
+            for resultPerson in resultPersons{
+                personForNow.append(resultPerson)
             }
+        default:
+            break
         }
-    }
-    
-    func getALuckyBitch()->PersonInEgg {
-        //获取到当前可用的用户
-        let realm = try! Realm()
-        var availablePerson = realm.objects(Person.self).filter("isAvailable = true")
-        print("数目\(availablePerson.count)")
-        if availablePerson.count>0{
-            //从中抽取一个用户
-            var availablePersonArray = availablePerson.sorted { (person1, person2) -> Bool in
-                return arc4random() % 2 > 0
-            }
-            let luckyperson = availablePersonArray.removeFirst()
-            
-            try! realm.write {
-                personForNow.append(luckyperson)
-                luckyperson.isAvailable = false
-            }
-            print(luckyperson.name)
-            return PersonInEgg(name: luckyperson.name, number: luckyperson.number,color:luckyperson.color)
-        }else{
-            return PersonInEgg(name: "没有人可以抽了", number: -1,color:"全")
-        }
+        eggPersonCollectionView.reloadData()
     }
     
     /**直接访问数据库抽取一个数据实例，不做其他处理*/
@@ -585,10 +575,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return arc4random() % 2 > 0
         }
         let luckyperson = availablePersonArray.removeFirst()
+        print(luckyperson.name)
         return luckyperson
     }
     /**直接访问数据库抽取一个指定颜色的数据实例，不做其他处理*/
     func newGetALuckyBitchByColor(color:String)->Person{
+        if color == "全"{
+            return newGetALuckyBitch()
+        }
         //获取到当前可用的用户
         let realm = try! Realm()
         let availablePerson = realm.objects(Person.self).filter("isAvailable = true AND color = '\(color)'")
@@ -602,6 +596,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return arc4random() % 2 > 0
         }
         let luckyperson = availablePersonArray.removeFirst()
+        print(luckyperson.name)
         return luckyperson
     }
     /**直接访问数据库抽取number个数据实例，不做其他处理*/
@@ -624,6 +619,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     /**直接访问数据库依据颜色抽取number个数据实例，不做其他处理*/
     func newGetSomeLuckyBitchsByColor(number:Int,color:String)->[Person]{
+        if color == "全"{
+            return newGetSomeLuckyBitchs(number: number)
+        }
         let realm = try! Realm()
         var returnPersons:[Person] = []
         for _ in 0..<number{
@@ -640,11 +638,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         return returnPersons
     }
-    /**直接访问数据库抽取一个有心愿的数据实例，不做其他处理*/
+    /**直接访问数据库从填写了心愿的用户中抽取一个有心愿的数据实例*/
     func newGetALuckyBitchHasWish()->Person{
         //获取到当前可用的用户
         let realm = try! Realm()
-        let availablePerson = realm.objects(Person.self).filter("isAvailable = true AND wish != '未填写心愿'")
+        let availablePerson = realm.objects(Person.self).filter("wish != '未填写心愿'")
+        //let availablePerson = realm.objects(Person.self).filter("name = '徐炜楠' AND wish != '未填写心愿'")
         guard availablePerson.count > 0 else{
             let tempPerson = Person()
             tempPerson.name = "没有人可以抽了"
@@ -657,40 +656,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let luckyperson = availablePersonArray.removeFirst()
         return luckyperson
     }
-    func getALuckyBitchByColor(color:String)->PersonInEgg {
-        if color == "全"{
-            return getALuckyBitch()
-        }
-        //获取到当前可用的用户
-        let realm = try! Realm()
-        let availablePerson = realm.objects(Person.self).filter("isAvailable = true").filter("color = '\(color)'")
-        print("数目\(availablePerson.count)")
-        if availablePerson.count>0{
-            //从中抽取一个用户
-            var availablePersonArray = availablePerson.sorted { (person1, person2) -> Bool in
-                return arc4random() % 2 > 0
-            }
-            let luckyperson = availablePersonArray.removeFirst()
-            try! realm.write {
-                personForNow.append(luckyperson)
-                luckyperson.isAvailable = false
-            }
-            print(luckyperson.name)
-            return PersonInEgg(name: luckyperson.name, number: luckyperson.number,color:luckyperson.color)
-        }else{
-            return PersonInEgg(name: "没有人可以抽了", number: -1,color:"全")
-        }
-    }
-    @IBAction func cheatingAction(_ sender: UIButton) {
+    
+    @IBAction func kongRongAction(_ sender: UIButton) {
         let optionMenu = UIAlertController(title: nil,message: "有人不想要这个奖，再抽一个人", preferredStyle:.actionSheet)
         
         let getPictureFromLibraryButton = UIAlertAction(title: "开始抽取", style:.destructive){ (action) in
             let tempPerson = self.newGetALuckyBitch()
-            let cheatingResultAlert = UIAlertController(title: "随机抽取", message: "\(tempPerson.color)色方阵的\(tempPerson.name)\(tempPerson.name == "周璇" ? "(\(tempPerson.number))" : "")中奖了！", preferredStyle: .alert)
-            let cheatingResultAlertCancel = UIAlertAction(title: "这个不要", style: .cancel, handler: nil)
-            let cheatingResultAlertSure = UIAlertAction(title: "就这个", style: .default, handler: { (action) in
+            let kongRongResultAlert = UIAlertController(title: "随机抽取", message: "\(tempPerson.color)色方阵的\(tempPerson.name)\(tempPerson.name == "周璇" ? "(\(tempPerson.number))" : "")中奖了！", preferredStyle: .alert)
+            let kongRongResultAlertCancel = UIAlertAction(title: "这个不要", style: .cancel, handler: nil)
+            let kongRongResultAlertSure = UIAlertAction(title: "就这个", style: .default, handler: { (action) in
                 //新建一个奖品条目
-                var tempPersonTempPrize = Prize()
+                let tempPersonTempPrize = Prize()
                 tempPersonTempPrize.masterNumber = tempPerson.number
                 tempPersonTempPrize.name = "\(self.current🎁Mode.text!)中临时抽出的奖"
                 let realm = try! Realm()
@@ -699,9 +675,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                     realm.add(tempPersonTempPrize)
                 }
             })
-            cheatingResultAlert.addAction(cheatingResultAlertCancel)
-            cheatingResultAlert.addAction(cheatingResultAlertSure)
-            self.present(cheatingResultAlert, animated: true, completion: nil)
+            kongRongResultAlert.addAction(kongRongResultAlertCancel)
+            kongRongResultAlert.addAction(kongRongResultAlertSure)
+            self.present(kongRongResultAlert, animated: true, completion: nil)
         }
         
         let cancelButton = UIAlertAction(title: "取消", style: .cancel, handler: nil)
@@ -718,7 +694,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         self.present(optionMenu, animated: true,completion: nil)
     }
-    struct PrizeInEgg {
+    struct BottomPrize {
         var name = "奖品"
         var number = 0
         var imageUrl = "https://www.baidu.com/img/bd_logo1.png?qua=high&where=super"
@@ -731,15 +707,4 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             self.order = order
         }
     }
-    struct PersonInEgg {
-        var name = "名字"
-        var number = -1
-        var color = "全"
-        init(name:String,number:Int,color:String){
-            self.name = name
-            self.number = number
-            self.color = color
-        }
-    }
-    
 }

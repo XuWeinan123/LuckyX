@@ -159,7 +159,7 @@ class LotteryModeAddVC: UIViewController,UICollectionViewDelegate,UICollectionVi
         sender.isSelected = !sender.isSelected
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard var selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         prizeSettingItems.append(LotteryModeAddVC.PrizeInSetting(name: "奖品", number: 1, image: selectedImage))

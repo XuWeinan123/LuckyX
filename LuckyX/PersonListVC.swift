@@ -34,12 +34,67 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     func initTwoLists(){
         let realm = try! Realm()
         leftPersons = Array(realm.objects(Person.self).filter("isAvailable = true"))
+        leftPersons?.sort(by: { (person1, person2) -> Bool in
+            return person1.number < person2.number
+        })
         rightPersons = Array(realm.objects(Person.self).filter("isAvailable = false"))
-        print("\(leftPersons?.count)+\(rightPersons?.count)")
+        //对中奖人员排序
+        rightPersons?.sort(by: { (person1, person2) -> Bool in
+            if color2Number(color: person1.color) != color2Number(color: person2.color){
+                return color2Number(color: person1.color) < color2Number(color: person2.color)
+            }else{
+                return person1.number < person2.number
+            }
+        })
         //初始化title
         self.navigationItem.title = "抽奖列表(\(leftPersons?.count.description ?? "NaN")/\(rightPersons?.count.description ?? "NaN"))"
+        
+        //测试用，统计各颜色是多少人
+        var purple = 0
+        var red = 0
+        var green = 0
+        var yellow = 0
+        var blue = 0
+        var pink = 0
+        for person in rightPersons!{
+            switch person.color{
+            case "紫":
+                purple += 1
+            case "红":
+                red += 1
+            case "绿":
+                green += 1
+            case "黄":
+                yellow += 1
+            case "蓝":
+                blue += 1
+            case "粉":
+                pink += 1
+            default:
+                break
+            }
+        }
+        print("紫色:\(purple)\n红色:\(red)\n绿色:\(green)\n黄色:\(yellow)\n蓝色:\(blue)\n粉色:\(pink)\n")
     }
-
+    /**将颜色转换成数值*/
+    func color2Number(color:String) -> Int{
+        switch color {
+        case "紫":
+            return 1
+        case "红":
+            return 2
+        case "绿":
+            return 3
+        case "黄":
+            return 4
+        case "蓝":
+            return 5
+        case "粉":
+            return 6
+        default:
+            return 0
+        }
+    }
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView.tag == 0{
@@ -67,10 +122,28 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 numberStr = "IN\(numberStr)"
             case "7":
                 numberStr = "S\(numberStr)"
+            case "1":
+                numberStr = "1\(numberStr)"
             default:
                 numberStr = "8\(numberStr)"
             }
             cell.number.text = numberStr
+            switch rightPersons![indexPath.row].color {
+            case "红":
+                cell.color.backgroundColor = #colorLiteral(red: 0.9176470588, green: 0.2039215686, blue: 0.2784313725, alpha: 1)
+            case "绿":
+                cell.color.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.8196078431, blue: 0.5058823529, alpha: 1)
+            case "黄":
+                cell.color.backgroundColor = #colorLiteral(red: 1, green: 0.7960784314, blue: 0.1058823529, alpha: 1)
+            case "蓝":
+                cell.color.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            case "紫":
+                cell.color.backgroundColor = #colorLiteral(red: 0.4705882353, green: 0.1568627451, blue: 1, alpha: 1)
+            case "粉":
+                cell.color.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.4784313725, blue: 0.5098039216, alpha: 1)
+            default:
+                cell.color.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            }
             let realm = try! Realm()
             let tempNumber = rightPersons![indexPath.row].number
             let tempPrize = realm.objects(Prize.self).filter("masterNumber = \(tempNumber)").first
@@ -117,60 +190,4 @@ class PersonListVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             return (rightPersons?.count)!
         }
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class RightPersonCell: UITableViewCell {
 
+    @IBOutlet weak var color: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var number: UILabel!
     @IBOutlet weak var prize: UILabel!
