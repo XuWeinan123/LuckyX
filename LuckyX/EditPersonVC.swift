@@ -70,13 +70,13 @@ class EditPersonVC: UIViewController,UITextViewDelegate,UITableViewDelegate,UITa
     }
     func textViewDidChange(_ textView: UITextView) {
         editPersons.removeAll()
-        let eachPersons = textView.text?.split(separator: "\r")
+        let eachPersons = textView.text?.replacingOccurrences(of: "\n", with: "\r").split(separator: "\r")
         for eachPerson in eachPersons!{
             let eachItems = eachPerson.split(separator: " ")
 //            for eachItem in eachItems{
 //                print(eachItem)
 //            }
-            print(eachItems)
+            //print(eachItems)
             if eachItems.count < 4{
                 let tempPerson = Person()
                 tempPerson.name = "输入错误"

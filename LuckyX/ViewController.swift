@@ -22,6 +22,7 @@ class Person: Object {
         return "number"
     }
 }
+
 class Prize: Object{
     @objc dynamic var name = ""
     @objc dynamic var masterNumber = -1
@@ -38,7 +39,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     /**用来保存暂存的抽奖用户名*/
     var personForNow:[Person] = []
     var 🥉Colors = ["绿","红","黄","粉","蓝","紫"]
-    @IBOutlet weak var getSomeLuckyBitchsBtn: UIButton!
     @IBOutlet weak var animPlaceHolderView: UIView!
     
     @IBOutlet weak var personCollectionViewWidthConstraint: NSLayoutConstraint!
@@ -66,6 +66,25 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet var RightBtnSeven: UIButton!
     var rightBtns:[UIButton] = []
     
+    var currentWish = "当前心愿"
+    @IBAction func showWishAction(_ sender: UIButton) {
+        //如果砸的是特等奖的蛋，打印出心愿
+        if current🎁Mode.text == "特等奖" && currentWish != "当前心愿"{
+            let startPoint = CGPoint(x: eggPersonCollectionView.frame.origin.x+eggPersonCollectionView.frame.width/2, y: eggPersonCollectionView.frame.origin.y+eggPersonCollectionView.frame.height)
+            let wishText = UILabel(frame: CGRect(x: 10, y: 0, width: 108/9*19.5-20, height: 108))
+            wishText.text = currentWish.replacingOccurrences(of: "_", with: " ")
+            wishText.textAlignment = NSTextAlignment.center
+            wishText.numberOfLines = 1
+            wishText.sizeToFit()
+            let aView = UIView(frame: CGRect(x: wishText.frame.origin.x-10, y: wishText.frame.origin.y-10, width: wishText.frame.width+20, height: wishText.frame.height+20))
+            wishText.frame.origin.y += 20
+            aView.addSubview(wishText)
+            let popover = Popover()
+            popover.show(aView, point: startPoint)
+            //就不验证了，小心点
+            //sender.isHidden = true
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
             return bottomPrizes.count
@@ -111,7 +130,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             return cell
         }
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,  didSelectItemAt indexPath: IndexPath) {
         //奖品选择
         if collectionView.tag == 0{
             //选择前判断颜色是否选中
@@ -148,7 +167,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             }, completion: nil)
             
             sunshineResultBtn.alpha = 0
-            UIView.animate(withDuration: 0.2, delay: 1, options: UIView.AnimationOptions.curveLinear, animations: {
+            UIView.animate(withDuration: 0.2, delay: 1.5, options: UIView.AnimationOptions.curveLinear, animations: {
                 self.sunshineResultBtn.alpha = 1
             }, completion: nil)
             
@@ -169,29 +188,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 return
             }else{
                 (collectionView.cellForItem(at: indexPath) as! PersonCell).smash()
-                //如果砸的是特等奖的蛋，打印出心愿
-                if current🎁Mode.text == "特等奖"{
-                    print(personForNow[indexPath.row].wish)
-                    Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
-                        let startPoint = CGPoint(x: collectionView.frame.origin.x+collectionView.frame.width/2, y: collectionView.frame.origin.y+collectionView.frame.height)
-                        let wishText = UILabel(frame: CGRect(x: 10, y: 0, width: 108/9*19.5-20, height: 108))
-                        wishText.text = self.personForNow[indexPath.row].wish.replacingOccurrences(of: "_", with: " ")
-                        wishText.textAlignment = NSTextAlignment.center
-                        wishText.numberOfLines = 1
-                        wishText.sizeToFit()
-                        let aView = UIView(frame: CGRect(x: wishText.frame.origin.x-10, y: wishText.frame.origin.y-10, width: wishText.frame.width+20, height: wishText.frame.height+20))
-                        wishText.frame.origin.y += 20
-                        aView.addSubview(wishText)
-                        let popover = Popover()
-                        popover.show(aView, point: startPoint)
-                    }
-                }
                 let realm = try! Realm()
                 try! realm.write {
                     personForNow[indexPath.row].isAvailable = false
                 }
-                //写入奖品，如果是特等奖，判断特等奖中奖用户是不是已经中过奖了，如果中过奖了那么更新一下。
+                //写入奖品，如果是特等奖，1.更新当前心愿2.判断特等奖中奖用户是不是已经中过奖了，如果中过奖了那么更新一下。
                 if current🎁Mode.text == "特等奖"{
+                    currentWish = personForNow[indexPath.row].wish
                     let realm = try! Realm()
                     let tempResult = realm.objects(Prize.self).filter("masterNumber = \(personForNow[indexPath.row].number)")
                     if tempResult.count != 0{
@@ -502,8 +505,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         bottomPrizes.append(BottomPrize(name: "张玉的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fxp2iyndr9j305k05kgll.jpg", order: 58))
         bottomPrizes.append(BottomPrize(name: "刘齐虎的红包", number: 1, imageUrl: "https://ws3.sinaimg.cn/large/006tNbRwgy1fxp2iuwt7gj305k05k74a.jpg", order: 59))
         bottomPrizes.append(BottomPrize(name: "谢松涛的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 60))
-        bottomPrizes.append(BottomPrize(name: "Andy的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 61))
-        bottomPrizes.append(BottomPrize(name: "姜晗的红包", number: 1, imageUrl: "https://ws2.sinaimg.cn/large/006tNbRwgy1fxr7dwdbdgj305k05kq2y.jpg", order: 62))
+        bottomPrizes.append(BottomPrize(name: "Andy的红包", number: 1, imageUrl: "https://ws4.sinaimg.cn/large/006tNbRwgy1fyb8lbljhej305k05kgll.jpg", order: 61))
+        bottomPrizes.append(BottomPrize(name: "姜晗的红包", number: 1, imageUrl: "https://ws1.sinaimg.cn/large/006tNbRwgy1fyb8l5fjksj305k05kq2x.jpg", order: 62))
         bottomPrizeCollectionView.reloadData()
         sideBtnsSelect(nil)
         //调整动画时间戳

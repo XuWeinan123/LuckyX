@@ -644,13 +644,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" alpha="0.050000000000000003" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRx-uF-1jy">
-                                <rect key="frame" x="520" y="155" width="72" height="72"/>
-                                <state key="normal" backgroundImage="刷新"/>
-                                <connections>
-                                    <action selector="getSomeLuckyBitchs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vXa-z4-8MS"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="电视机" translatesAutoresizingMaskIntoConstraints="NO" id="Wsj-01-WIm">
                                 <rect key="frame" x="217" y="104" width="678" height="516"/>
                                 <constraints>
@@ -1007,7 +1000,7 @@
                                     <action selector="sunshineBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gAz-pq-SPh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTJ-J9-Lny">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTJ-J9-Lny">
                                 <rect key="frame" x="14" y="94" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1026,6 +1019,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcO-SL-Eq6">
+                                <rect key="frame" x="544" y="511" width="25" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="showWishAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="unc-Ho-ZTn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1048,7 +1048,6 @@
                             <constraint firstAttribute="bottom" secondItem="Qth-UI-dam" secondAttribute="bottom" id="YWB-RQ-eEs"/>
                             <constraint firstItem="4bv-xU-5fT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="gIv-B6-mNL"/>
                             <constraint firstItem="JfX-Av-qv2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmO-hv-3Rc"/>
-                            <constraint firstItem="NRx-uF-1jy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="hvE-Hx-Nr7"/>
                             <constraint firstItem="Wsj-01-WIm" firstAttribute="trailing" secondItem="n8R-37-VkS" secondAttribute="trailing" constant="19" id="ifm-zD-PZ8"/>
                             <constraint firstItem="IpB-KT-ypC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jl7-4Q-3D2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72g-8E-A7l" secondAttribute="trailing" id="l4s-oz-h06"/>
@@ -1082,7 +1081,6 @@
                         <outlet property="bottomPrizeCollectionView" destination="72g-8E-A7l" id="SbH-en-Zei"/>
                         <outlet property="current🎁Mode" destination="x2j-k1-72w" id="gaJ-am-kly"/>
                         <outlet property="eggPersonCollectionView" destination="JfX-Av-qv2" id="hUG-LN-5xM"/>
-                        <outlet property="getSomeLuckyBitchsBtn" destination="NRx-uF-1jy" id="bby-0Z-ppi"/>
                         <outlet property="personCollectionViewWidthConstraint" destination="mch-0E-0dA" id="uha-rr-pwz"/>
                         <outlet property="rules" destination="ylE-AC-QeG" id="rrH-YF-Fd4"/>
                         <outlet property="sunshineResultBtn" destination="Drs-n2-PRz" id="EVq-oA-X0x"/>
@@ -1472,7 +1470,6 @@
         <image name="二等奖 选中" width="48" height="48"/>
         <image name="作弊" width="48" height="48"/>
         <image name="作弊 选中" width="48" height="48"/>
-        <image name="刷新" width="72" height="72"/>
         <image name="名单设置" width="100" height="40"/>
         <image name="奖品栏" width="1024" height="186"/>
         <image name="彩色" width="133" height="48"/>
